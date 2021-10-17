@@ -4,8 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Dispatch, RootState} from '../store';
 import useManageTokens from '../store/useManageTokens';
 import Input from './Input';
+import TokenValueInput from './TokenValueInput';
 
-const EditTokenForm = () => {
+const EditTokenForm = ({resolvedTokens}) => {
     const {activeTokenSet} = useSelector((state: RootState) => state.tokenState);
     const {editSingleToken, createSingleToken} = useManageTokens();
     const {editToken} = useSelector((state: RootState) => state.uiState);
@@ -13,6 +14,11 @@ const EditTokenForm = () => {
     const [currentEditToken, setCurrentEditToken] = React.useState(editToken);
 
     const isValid = currentEditToken.value && currentEditToken.name.match(/^\S*$/);
+
+    const handleValueChange = (e) => {
+        console.log('VAL IS', e);
+        setCurrentEditToken({...currentEditToken, value: e.target.value});
+    };
 
     const handleChange = (e) => {
         e.persist();
@@ -111,15 +117,12 @@ const EditTokenForm = () => {
                     />
                 ))
             ) : (
-                <Input
-                    full
+                <TokenValueInput
                     label={currentEditToken.property}
                     value={currentEditToken.value}
-                    onChange={handleChange}
-                    type="text"
-                    name="value"
-                    required
+                    onChange={handleValueChange}
                     custom={currentEditToken.schema}
+                    resolvedTokens={resolvedTokens}
                 />
             )}
             {currentEditToken.explainer && (

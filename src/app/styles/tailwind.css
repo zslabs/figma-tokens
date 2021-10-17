@@ -334,7 +334,7 @@ form {
 }
 
 .input {
-    @apply bg-white border border-gray-300 text-xs p-2 rounded shadow-sm w-24;
+    @apply bg-white border border-gray-300 text-xs p-2 rounded shadow-sm w-24 px-2 h-full font-mono;
 }
 
 /* switch */
@@ -480,6 +480,10 @@ form {
     right: 1px;
     bottom: 2px;
     cursor: nwse-resize;
+}
+
+input__input {
+    @apply h-full pl-2;
 }
 
 @tailwind utilities;
