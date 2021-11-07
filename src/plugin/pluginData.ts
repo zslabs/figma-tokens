@@ -94,7 +94,7 @@ export function sendPluginValues(nodes, values?) {
     }
 }
 
-export function removePluginData(nodes, key?) {
+export function removePluginData(nodes, shouldRemoveValues = true, key?) {
     nodes.map((node) => {
         try {
             node.setRelaunchData({});
@@ -103,13 +103,17 @@ export function removePluginData(nodes, key?) {
                 node.setPluginData(key, '');
                 node.setSharedPluginData('tokens', key, '');
                 // TODO: Introduce setting asking user if values should be removed?
-                removeValuesFromNode(node, key);
+                if (shouldRemoveValues) {
+                    removeValuesFromNode(node, key);
+                }
             } else {
                 Object.keys(properties).forEach((prop) => {
                     node.setPluginData(prop, '');
                     node.setSharedPluginData('tokens', prop, '');
                     // TODO: Introduce setting asking user if values should be removed?
-                    removeValuesFromNode(node, prop);
+                    if (shouldRemoveValues) {
+                        removeValuesFromNode(node, prop);
+                    }
                 });
             }
             node.setPluginData('values', '');
@@ -127,7 +131,7 @@ export function updatePluginData(nodes, values) {
             switch (value) {
                 case 'delete':
                     delete newValuesOnNode[key];
-                    removePluginData([node], key);
+                    removePluginData([node], true, key);
                     break;
                 // Pre-Version 53 had horizontalPadding and verticalPadding.
                 case 'horizontalPadding':

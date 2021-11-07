@@ -5,6 +5,7 @@ import 'regenerator-runtime/runtime';
 import {removeSingleCredential, updateCredentials} from '@/utils/credentials';
 import {updateUISettings, getUISettings} from '@/utils/uiSettings';
 import getLastOpened from '@/utils/getLastOpened';
+import {UpdateMode} from 'Types/state';
 import {getUserId} from './helpers';
 import pullStyles from './pullStyles';
 import updateStyles from './updateStyles';
@@ -26,10 +27,12 @@ import {MessageToPluginTypes} from '../../types/messages';
 import {StorageProviderType} from '../../types/api';
 import compareProvidersWithStored from './compareProviders';
 
-figma.showUI(__html__, {
-    width: 400,
-    height: 600,
-});
+async function main() {
+    figma.showUI(__html__, {
+        width: 400,
+        height: 600,
+    });
+}
 
 figma.on('selectionchange', () => {
     const nodes = figma.currentPage.selection;
@@ -107,7 +110,7 @@ figma.ui.onmessage = async (msg) => {
 
         case MessageToPluginTypes.REMOVE_NODE_DATA:
             try {
-                removePluginData(figma.currentPage.selection, msg.key);
+                removePluginData(figma.currentPage.selection, true, msg.key);
                 sendPluginValues(figma.currentPage.selection);
             } catch (e) {
                 console.error(e);
@@ -160,3 +163,39 @@ figma.ui.onmessage = async (msg) => {
         default:
     }
 };
+
+async function runWithParameters({action, variable = ''}: ParameterValues) {
+    figma.showUI(__html__, {visible: false});
+    try {
+        const nodes = await findAllWithData({updateMode: UpdateMode.SELECTION});
+        figma.currentPage.selection = nodes;
+
+        if (action === 'remove') {
+            removePluginData(nodes, false);
+        }
+    } finally {
+        figma.closePlugin();
+    }
+}
+
+figma.on('run', ({parameters}: RunEvent) => {
+    if (parameters) {
+        runWithParameters(parameters);
+    } else {
+        main();
+    }
+});
+
+figma.parameters.on('input', ({query, key, result}: ParameterInputEvent) => {
+    switch (key) {
+        case 'action': {
+            const actions = ['list', 'remove'];
+            result.setSuggestions(actions);
+            break;
+        }
+        case 'variable':
+            result.setSuggestions([]);
+            break;
+        default:
+    }
+});

@@ -1,5 +1,5 @@
 {
-  "name": "Tokens",
+  "name": "Figma Tokens",
   "id": "843461159747178978",
   "api": "1.0.0",
   "main": "dist/code.js",
@@ -7,5 +7,18 @@
   "editorType": ["figma"],
   "relaunchButtons": [
     {"command": "edit", "name": "Tokens"}
-  ]
+  ],
+  "parameterOnly": false,
+  "parameters": [
+    {
+      "name": "Action",
+      "key": "action"
+    },
+    {
+      "name": "Variable",
+      "key": "variable",
+      "allowFreeform": true,
+      "optional": true
+    }
+]
 }
