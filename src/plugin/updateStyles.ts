@@ -9,6 +9,8 @@ export default function updateStyles(
   shouldCreate = false,
   settings: SettingsState = {} as SettingsState,
 ): void {
+  console.log('Updating styles', tokens);
+
   const styleTokens = tokens.map((token) => {
     const slice = settings?.ignoreFirstPartForStyles ? 1 : 0;
     const name = token.name.split('.').slice(slice).join('/');
@@ -18,9 +20,13 @@ export default function updateStyles(
       value: transformValue(token.value, token.internal__Type),
     };
   });
-  const colorTokens = styleTokens.filter((n) => ['color', 'colors'].includes(n.type));
-  const textTokens = styleTokens.filter((n) => ['typography'].includes(n.type));
-  const effectTokens = styleTokens.filter((n) => ['boxShadow'].includes(n.type));
+  console.log('Style tokens', styleTokens);
+
+  const colorTokens = styleTokens.filter((n) => ['color', 'colors'].includes(n.internal__Type));
+  const textTokens = styleTokens.filter((n) => ['typography'].includes(n.internal__Type));
+  const effectTokens = styleTokens.filter((n) => ['boxShadow'].includes(n.internal__Type));
+
+  console.log('text tokens', textTokens);
 
   if (!colorTokens && !textTokens && !effectTokens) return;
   if (colorTokens.length > 0) {

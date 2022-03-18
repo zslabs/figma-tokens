@@ -7,6 +7,9 @@ export default function updateTextStyles(textTokens: SingleTokenObject[], should
   // Iterate over textTokens to create objects that match figma styles
   const textStylesToKeyMap = getTextStylesKeyMap();
 
+  console.log('textTokens', textTokens);
+  console.log('textStylesToKeyMap', textStylesToKeyMap);
+
   textTokens.forEach((token) => {
     const trimmedKey = normalizeTokenName(token.name);
 

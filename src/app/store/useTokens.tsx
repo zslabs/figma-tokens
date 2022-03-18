@@ -133,12 +133,15 @@ export default function useTokens() {
   function createStylesFromTokens() {
     track('createStyles');
 
+    console.log('Creating styles', tokens);
+
     const resolved = resolveTokenValues(mergeTokenGroups(tokens, usedTokenSet));
-    const withoutIgnored = resolved.filter((token) => !token.name.split('.').some((part) => part.startsWith('_')));
+    const withoutIgnoredAndTypeTokens = resolved.filter((token) => !token.name.endsWith('type') && !token.name.split('.').some((part) => part.startsWith('_')));
+    console.log('Creating styles', resolved, withoutIgnoredAndTypeTokens);
 
     postToFigma({
       type: MessageToPluginTypes.CREATE_STYLES,
-      tokens: withoutIgnored,
+      tokens: withoutIgnoredAndTypeTokens,
       settings,
     });
   }

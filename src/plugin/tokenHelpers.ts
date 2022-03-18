@@ -21,6 +21,8 @@ export function reduceToValues(tokens) {
 }
 
 export function resolveTokenValues(tokens, previousCount = undefined) {
+  console.log('BEfore resolve', tokens);
+
   const aliases = findAllAliases(tokens);
   let returnedTokens = tokens;
   returnedTokens = tokens.map((t, _, tokensInProgress) => {
@@ -63,6 +65,7 @@ export function resolveTokenValues(tokens, previousCount = undefined) {
   if (aliases.length > 0 && (previousCount > aliases.length || !previousCount)) {
     return resolveTokenValues(returnedTokens, aliases.length);
   }
+  console.log('after resolve', returnedTokens);
 
   return returnedTokens;
 }
@@ -70,16 +73,20 @@ export function resolveTokenValues(tokens, previousCount = undefined) {
 export function mergeTokenGroups(tokens: TokenSet, usedSets: string[] = []): SingleTokenObject[] {
   const mergedTokens = [];
   // Reverse token set order (right-most win) and check for duplicates
+  console.log('before merge', tokens);
+
   Object.entries(tokens)
     .reverse()
     .forEach((tokenGroup: [string, SingleTokenObject[]]) => {
       if (!usedSets || usedSets.length === 0 || usedSets.includes(tokenGroup[0])) {
         tokenGroup[1].forEach((token) => {
           if (!mergedTokens.some((t) => t.name === token.name)) {
-            mergedTokens.push({ ...appendTypeToToken(token), internal__Parent: tokenGroup[0] });
+            mergedTokens.push({ ...token, internal__Parent: tokenGroup[0] });
           }
         });
       }
     });
+  console.log('AFter merge', mergedTokens);
+
   return mergedTokens;
 }

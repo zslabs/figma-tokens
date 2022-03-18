@@ -1,7 +1,9 @@
 import { SingleToken, SingleTokenObject } from '@/types/tokens';
 import { isTypographyToken, isShadowToken, isValueToken } from '../app/components/utils';
 
-function isTypeDefinition(key: string): boolean {
+export function isTypeDefinition(key: string): boolean {
+  console.log('Deciding if is type', key);
+
   return key === 'type';
 }
 
@@ -26,6 +28,7 @@ function checkForTokens({
     returnValue = {
       ...token,
       internal__Type: givenType,
+      internal__isTypeToken: isTypeDefinition(parentKey),
     };
   } else if (
     (isTypographyToken(token) && !expandTypography)
@@ -33,6 +36,7 @@ function checkForTokens({
   ) {
     returnValue = {
       internal__Type: givenType,
+      internal__isTypeToken: isTypeDefinition(parentKey),
       value: Object.entries(token).reduce((acc, [key, val]) => {
         acc[key] = isValueToken(val) && returnValuesOnly ? val.value : val;
         return acc;
@@ -60,6 +64,7 @@ function checkForTokens({
         parentKey: key,
       });
       const tokenKey = root ? [root, key].join('.') : key;
+
       const tokenResult = { name: tokenKey, ...result, internal__isTypeToken: isTypeDefinition(parentKey) };
 
       if (result) {
@@ -72,6 +77,7 @@ function checkForTokens({
     returnValue = {
       value: token,
       internal__Type: givenType,
+      internal__isTypeToken: isTypeDefinition(parentKey),
     };
   }
 
