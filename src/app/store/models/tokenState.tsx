@@ -2,7 +2,7 @@
 import { createModel } from '@rematch/core';
 import isEqual from 'lodash.isequal';
 import {
-  SingleTokenObject, TokenGroup, SingleToken, TokenProps,
+  SingleTokenObject, TokenGroup, SingleToken, TokenProps, TokenType,
 } from '@/types/tokens';
 import { StorageProviderType } from '@/types/api';
 import defaultJSON from '@/config/default.json';
@@ -15,6 +15,7 @@ import parseJson from '@/utils/parseJson';
 import type { RootModel } from '.';
 import updateTokensOnSources from '../updateSources';
 import * as pjs from '../../../../package.json';
+import { stringifyTokenValues } from '@/app/components/utils';
 
 const defaultTokens: TokenProps = {
   version: pjs.plugin_version,
@@ -26,11 +27,15 @@ type TokenInput = {
   name: string;
   parent: string;
   value: SingleToken;
-  options: object;
+  options: ManageTokenOptions;
 };
 
 type EditTokenInput = TokenInput & {
   oldName?: string;
+};
+
+export type ManageTokenOptions = {
+  description?: string; type?: TokenType; implicitType?: TokenType
 };
 
 type DeleteTokenInput = { parent: string; path: string };
@@ -112,7 +117,7 @@ export const tokenState = createModel<RootModel>()({
     },
     setLastSyncedState: (state, data: string) => ({
       ...state,
-      lastSyncedState: data,
+      lastSyncedState: stringifyTokenValues(data),
     }),
     setTokenSetOrder: (state, data: string[]) => {
       const newTokens = {};
@@ -156,6 +161,8 @@ export const tokenState = createModel<RootModel>()({
       };
     },
     createToken: (state, data: TokenInput) => {
+      console.log('Creating token', data);
+
       let newTokens = {};
       const existingToken = state.tokens[data.parent].find((n) => n.name === data.name);
       if (!existingToken) {
@@ -245,6 +252,8 @@ export const tokenState = createModel<RootModel>()({
       };
     },
     editToken: (state, data: EditTokenInput) => {
+      console.log('Editing token', data);
+
       const nameToFind = data.oldName ? data.oldName : data.name;
       const index = state.tokens[data.parent].findIndex((token) => token.name === nameToFind);
       const newArray = state.tokens[data.parent];

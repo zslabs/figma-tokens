@@ -5,7 +5,7 @@ import { MessageToPluginTypes } from '@/types/messages';
 import { TokenProps } from '@/types/tokens';
 import convertTokensToObject from '@/utils/convertTokensToObject';
 import { notifyToUI, postToFigma } from '../../../plugin/notifiers';
-import { compareUpdatedAt } from '../../components/utils';
+import { compareUpdatedAt, stringifyTokenValues } from '../../components/utils';
 import * as pjs from '../../../../package.json';
 import useStorage from '../useStorage';
 
@@ -56,14 +56,12 @@ export async function updateJSONBinTokens({
 }) {
   const { id, secret } = context;
   try {
-    const tokenObj = JSON.stringify(
+    const tokenObj = stringifyTokenValues(
       {
         version: pjs.plugin_version,
         updatedAt,
         values: convertTokensToObject(tokens),
       },
-      null,
-      2,
     );
 
     if (oldUpdatedAt) {
@@ -189,7 +187,7 @@ export function useJSONbin() {
         provider: context,
         shouldSetInDocument: true,
       });
-      dispatch.tokenState.setLastSyncedState(JSON.stringify(tokenValues.values, null, 2));
+      dispatch.tokenState.setLastSyncedState(tokenValues.values);
       dispatch.tokenState.setTokenData(tokenValues);
     }
 

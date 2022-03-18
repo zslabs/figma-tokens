@@ -3,6 +3,7 @@ import { SingleToken, TokenType } from '@/types/tokens';
 import { Dispatch, RootState } from '../store';
 import useConfirm from '../hooks/useConfirm';
 import { BackgroundJobs } from '@/constants/BackgroundJobs';
+import { ManageTokenOptions } from './models/tokenState';
 
 export default function useManageTokens() {
   const { activeTokenSet } = useSelector((state: RootState) => state.tokenState);
@@ -17,7 +18,7 @@ export default function useManageTokens() {
     parent: string;
     name: string;
     value: SingleToken;
-    options?: { description?: string; type: TokenType };
+    options?: ManageTokenOptions;
     oldName?: string;
     shouldUpdateDocument?: boolean;
   }) {
@@ -49,7 +50,7 @@ export default function useManageTokens() {
     parent: string;
     name: string;
     value: SingleToken;
-    options?: { description?: string; type: TokenType };
+    options?: ManageTokenOptions;
     newGroup?: boolean;
     shouldUpdateDocument?: boolean;
   }) {

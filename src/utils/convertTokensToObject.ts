@@ -7,7 +7,10 @@ export default function convertTokensToObject(tokens) {
     val.forEach((token) => {
       const tokenWithType = appendTypeToToken(token);
       const { name, ...tokenWithoutName } = tokenWithType;
-      set(tokenGroupObj, token.name, tokenWithoutName);
+      delete tokenWithoutName.internal__Type;
+      delete tokenWithoutName.internal__isTypeToken;
+      const tokenValue = name.split('.').pop() === 'type' ? tokenWithoutName.value : tokenWithoutName;
+      set(tokenGroupObj, token.name, tokenValue);
     });
     acc[key] = tokenGroupObj;
     return acc;

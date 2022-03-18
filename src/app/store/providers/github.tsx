@@ -9,6 +9,7 @@ import usePushDialog from '@/app/hooks/usePushDialog';
 import IsJSONString from '@/utils/isJSONString';
 import { ContextObject } from '@/types/api';
 import { notifyToUI, postToFigma } from '../../../plugin/notifiers';
+import { stringifyTokenValues } from '@/app/components/utils';
 
 /** Returns a URL to a page where the user can create a pull request with a given branch */
 export function getCreatePullRequestUrl(id: string, branchName: string) {
@@ -16,14 +17,14 @@ export function getCreatePullRequestUrl(id: string, branchName: string) {
 }
 
 function hasSameContent(content, storedContent) {
-  const stringifiedContent = JSON.stringify(content.values, null, 2);
+  const stringifiedContent = stringifyTokenValues(content.values);
 
   return stringifiedContent === storedContent;
 }
 
 export const fetchBranches = async ({ context, owner, repo }) => {
   const octokit = new Octokit({ auth: context.secret, baseUrl: context.baseUrl });
-  const branches = await octokit.repos.listBranches({ owner, repo }).then((response: GetBranchesResponse) => response.data);
+  const branches = await octokit.repos.listBranches({ owner, repo }).then((response) => response.data);
   return branches.map((branch) => branch.name);
 };
 
@@ -139,10 +140,10 @@ export const readContents = async ({ context, owner, repo }) => {
 const extractFiles = (filePath, tokenObj) => {
   const files = {};
   if (filePath.endsWith('.json')) {
-    files[filePath] = JSON.stringify(tokenObj, null, 2);
+    files[filePath] = stringifyTokenValues(tokenObj);
   } else {
     Object.keys(tokenObj).forEach((key) => {
-      files[`${filePath}/${key}.json`] = JSON.stringify(tokenObj[key], null, 2);
+      files[`${filePath}/${key}.json`] = stringifyTokenValues(tokenObj[key]);
     });
   }
 
@@ -315,7 +316,7 @@ export function useGitHub() {
         if (!hasSameContent(content, tokenObj)) {
           const userDecision = await askUserIfPull();
           if (userDecision) {
-            dispatch.tokenState.setLastSyncedState(JSON.stringify(content.values, null, 2));
+            dispatch.tokenState.setLastSyncedState(content.values);
             dispatch.tokenState.setTokenData(content);
             notifyToUI('Pulled tokens from GitHub');
             return content;
@@ -342,7 +343,7 @@ export function useGitHub() {
         ...context,
       });
       if (data?.values) {
-        dispatch.tokenState.setLastSyncedState(JSON.stringify(data.values, null, 2));
+        dispatch.tokenState.setLastSyncedState(data.values);
         dispatch.tokenState.setTokenData(data);
         rawTokenObj = data.values;
       } else {

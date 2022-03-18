@@ -12,7 +12,6 @@ function TokenTree({
 }) {
   const { editProhibited } = useSelector((state: RootState) => state.tokenState);
 
-  console.log('Tokenval', tokenValues);
   return (
     <div className="flex justify-start flex-row flex-wrap">
       {Object.entries(tokenValues).map(([name, value]) => {

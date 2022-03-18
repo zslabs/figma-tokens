@@ -49,8 +49,6 @@ function Tokens({ isActive }: { isActive: boolean }) {
 
   if (!isActive) return null;
 
-  console.log('Tokens rendered', memoizedTokens);
-
   return (
     <div>
       <TokenSetSelector />

@@ -6,6 +6,10 @@ import { MessageToPluginTypes } from '../../types/messages';
 
 const parser = new Parser();
 
+export function stringifyTokenValues(tokens: object) {
+  return JSON.stringify(tokens, null, 2).concat('\n');
+}
+
 export function checkAndEvaluateMath(expr) {
   try {
     parser.evaluate(expr);

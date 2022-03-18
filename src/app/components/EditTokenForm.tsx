@@ -116,7 +116,7 @@ function EditTokenForm({ resolvedTokens }) {
         .map((n) => n.trim())
         .join('.');
       if (internalEditToken.isPristine) {
-        track('Create token', { type: internalEditToken.type });
+        track('Create token', { type: internalEditToken.internal__Type });
 
         createSingleToken({
           parent: activeTokenSet,
@@ -125,6 +125,7 @@ function EditTokenForm({ resolvedTokens }) {
           options,
         });
       } else {
+        console.log('EDITING TOKEN', internalEditToken, value, options);
         editSingleToken({
           parent: activeTokenSet,
           name: newName,
@@ -134,7 +135,7 @@ function EditTokenForm({ resolvedTokens }) {
         });
         // When users change token names references are still pointing to the old name, ask user to remap
         if (oldName && oldName !== newName) {
-          track('Edit token', { renamed: true, type: internalEditToken.type });
+          track('Edit token', { renamed: true, type: internalEditToken.internal__Type });
 
           const shouldRemap = await confirm({
             text: `Remap all tokens that use ${oldName} to ${newName}?`,
@@ -187,7 +188,7 @@ function EditTokenForm({ resolvedTokens }) {
       return null;
     }
 
-    switch (internalEditToken.type) {
+    switch (internalEditToken.internal__Type) {
       case 'boxShadow': {
         return <BoxShadowInput setValue={handleShadowChange} value={internalEditToken.value} />;
       }
@@ -202,7 +203,6 @@ function EditTokenForm({ resolvedTokens }) {
             type="text"
             name={key}
             custom={schemaValue}
-            required
           />
         ));
       }
@@ -219,12 +219,12 @@ function EditTokenForm({ resolvedTokens }) {
               required
               custom={internalEditToken.schema}
               placeholder={
-                internalEditToken.type === 'color'
+                internalEditToken.internal__Type === 'color'
                   ? '#000000, hsla(), rgba() or {alias}'
                   : 'Value or {alias}'
               }
               prefix={
-                internalEditToken.type === 'color' && (
+                internalEditToken.internal__Type === 'color' && (
                   <button
                     type="button"
                     className="block w-4 h-4 rounded-sm cursor-pointer shadow-border shadow-gray-300 focus:shadow-focus focus:shadow-primary-400"
@@ -236,12 +236,12 @@ function EditTokenForm({ resolvedTokens }) {
                 )
               }
             />
-            {inputHelperOpen && internalEditToken.type === 'color' && (
+            {inputHelperOpen && internalEditToken.internal__Type === 'color' && (
               <ColorPicker value={internalEditToken.value} onChange={handleColorValueChange} />
             )}
             {checkIfContainsAlias(internalEditToken.value) && (
               <div className="flex p-2 mt-2 font-mono text-gray-700 bg-gray-100 border-gray-300 rounded text-xxs itms-center">
-                {internalEditToken.type === 'color' ? (
+                {internalEditToken.internal__Type === 'color' ? (
                   <div
                     className="w-4 h-4 mr-1 border border-gray-200 rounded"
                     style={{ background: resolvedValue }}

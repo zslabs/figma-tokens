@@ -26,20 +26,21 @@ interface EditTokenObjectCommonProperties {
   schema: object;
   optionsSchema: object;
   options: object;
-  type: TokenType;
+  type?: TokenType;
+  internal__Type: TokenType;
 }
 
 export type EditTokenObject =
     | (EditTokenObjectCommonProperties & {
-      type: 'boxShadow';
+      internal__Type: 'boxShadow';
       value: ShadowTokenSingleValue[] | ShadowTokenSingleValue;
     })
     | (EditTokenObjectCommonProperties & {
-      type: 'typography';
+      internal__Type: 'typography';
       value: TypographyObject;
     })
     | (EditTokenObjectCommonProperties & {
-      type: TokenType;
+      internal__Type: TokenType;
       value: string | number;
     });
 

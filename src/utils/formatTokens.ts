@@ -1,5 +1,5 @@
 import set from 'set-value';
-import { expand } from '../app/components/utils';
+import { expand, stringifyTokenValues } from '../app/components/utils';
 
 export default function formatTokens({
   tokens,
@@ -27,5 +27,5 @@ export default function formatTokens({
     });
   });
 
-  return JSON.stringify(tokenObj, null, 2);
+  return stringifyTokenValues(tokenObj);
 }

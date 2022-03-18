@@ -21,6 +21,7 @@ function checkForTokens({
   const shouldExpandTypography = expandTypography ? isTypographyToken(token.value) : false;
   const shouldExpandShadow = expandShadow ? isShadowToken(token.value) : false;
 
+  console.log('GIVEN TYPE', givenType, token);
   if (isValueToken(token) && !shouldExpandTypography && !shouldExpandShadow) {
     returnValue = {
       ...token,
@@ -59,7 +60,7 @@ function checkForTokens({
         parentKey: key,
       });
       const tokenKey = root ? [root, key].join('.') : key;
-      const tokenResult = { name: tokenKey, ...result, internal__IsTypeToken: isTypeDefinition(parentKey) };
+      const tokenResult = { name: tokenKey, ...result, internal__isTypeToken: isTypeDefinition(parentKey) };
 
       if (result) {
         obj.push(tokenResult);

@@ -64,6 +64,7 @@ export function createTokensObject(tokens: SingleTokenObject[], tokenFilter = ''
     if (tokens.length > 0) {
       const obj = tokens.reduce((acc, cur) => {
         if (tokenFilter === '' || cur.name?.toLowerCase().search(tokenFilter?.toLowerCase()) >= 0) {
+          // Bug around here that inserts object Object
           const tokenTypeProp = (cur.type && cur.type !== '' && cur.type !== 'undefined') ? cur.type : cur.internal__Type;
           const propToSet = tokenTypeProp || transformName(cur.name.split('.').slice(0, 1).toString());
 

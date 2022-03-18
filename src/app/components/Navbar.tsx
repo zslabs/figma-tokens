@@ -8,6 +8,7 @@ import Tooltip from './Tooltip';
 import useRemoteTokens from '../store/remoteTokens';
 import { StorageProviderType } from '../../types/api';
 import { RootState, Dispatch } from '../store';
+import { stringifyTokenValues } from './utils';
 
 function TabButton({ name, label, first = false }) {
   const { activeTab } = useSelector((state: RootState) => state.uiState);
@@ -53,7 +54,7 @@ function Navbar() {
   const { pullTokens, pushTokens } = useRemoteTokens();
 
   const checkForChanges = () => {
-    if (lastSyncedState !== JSON.stringify(convertTokensToObject(tokens), null, 2)) {
+    if (lastSyncedState !== stringifyTokenValues(convertTokensToObject(tokens))) {
       return true;
     }
   };

@@ -44,14 +44,13 @@ function TokenListing({
       name,
       initialName: name,
       isPristine,
-      type: tokenType,
+      internal__Type: tokenType,
       explainer,
       property,
       schema: schema?.value,
       optionsSchema: schema?.options,
       options: {
         description: token.description,
-        type: tokenType,
       },
     });
   };
