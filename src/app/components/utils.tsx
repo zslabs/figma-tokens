@@ -24,16 +24,16 @@ export function isValueToken(token): token is { value: string | number } {
 
 export function isTypographyToken(token) {
   if (typeof token !== 'object') return false;
-  return token.type === 'typography';
+  return token.internal__Type === 'typography';
 }
 
 export function isShadowToken(token) {
   if (typeof token !== 'object') return false;
-  return token.type === 'boxShadow';
+  return token.internal__Type === 'boxShadow';
 }
 
 export function isSingleToken(token): token is { value: string } {
-  return typeof token === 'object' && 'value' in token && 'type' in token && 'name' in token;
+  return typeof token === 'object' && 'value' in token && 'internal__Type' in token && 'name' in token;
 }
 
 export function expand(token) {

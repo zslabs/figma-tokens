@@ -20,12 +20,15 @@ export default function parseTokenValues(tokens) {
 
     if (typeof parsedGroup === 'object') {
       const convertedToArray = convertToTokenArray({ tokens: parsedGroup });
+
       prev.push({ [group[0]]: convertedToArray });
       return prev;
     }
 
     return prev;
   }, []);
+
+  console.log('Reduced', Object.assign({}, ...reducedTokens));
 
   return Object.assign({}, ...reducedTokens);
 }

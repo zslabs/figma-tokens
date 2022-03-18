@@ -14,7 +14,7 @@ import EditTokenFormModal from './EditTokenFormModal';
 interface TokenListingType {
   label: string;
   property: string;
-  type: string;
+  internal__Type: string;
   values: object;
   help?: string;
   explainer?: string;
@@ -49,6 +49,8 @@ function Tokens({ isActive }: { isActive: boolean }) {
 
   if (!isActive) return null;
 
+  console.log('Tokens rendered', memoizedTokens);
+
   return (
     <div>
       <TokenSetSelector />
@@ -61,7 +63,7 @@ function Tokens({ isActive }: { isActive: boolean }) {
             explainer={group.explainer}
             schema={group.schema}
             property={group.property}
-            tokenType={group.type}
+            tokenType={group.internal__Type}
             values={group.values}
             resolvedTokens={resolvedTokens}
           />

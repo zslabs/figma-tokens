@@ -27,7 +27,7 @@ export function resolveTokenValues(tokens, previousCount = undefined) {
     let returnValue;
     let failedToResolve;
     // Iterate over Typography and boxShadow Object to get resolved values
-    if (['typography', 'boxShadow'].includes(t.type)) {
+    if (['typography', 'boxShadow'].includes(t.internal__Type)) {
       if (Array.isArray(t.value)) {
         // If we're dealing with an array, iterate over each item and then key
         returnValue = t.value.map((item) => Object.entries(item).reduce((acc, [key, value]: [string, SingleTokenObject]) => {

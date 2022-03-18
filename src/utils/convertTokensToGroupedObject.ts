@@ -16,17 +16,23 @@ export default function convertTokensToGroupedObject(tokens, excludedSets, optio
       delete tokenWithType.rawValue;
     }
     delete tokenWithType.internal__Parent;
+    delete tokenWithType.internal__Type;
+    console.log('Token with type before', tokenWithType);
+
     if (
-      (!!options.expandTypography && tokenWithType.type === 'typography')
-      || (!!options.expandShadow && tokenWithType.type === 'boxShadow')
+      (!!options.expandTypography && tokenWithType.internal__Type === 'typography')
+      || (!!options.expandShadow && tokenWithType.internal__Type === 'boxShadow')
     ) {
       const expanded = expand(tokenWithType.value);
       set(obj, token.name, { ...expanded });
     } else {
       set(obj, token.name, tokenWithType);
     }
+    console.log('Have set', token.name, tokenWithType);
     return acc;
   }, {});
+
+  console.log('TOKENOBJ', tokenObj);
 
   return tokenObj;
 }

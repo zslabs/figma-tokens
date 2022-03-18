@@ -27,7 +27,7 @@ export default function InspectorResolvedToken({ token }: { token: SingleTokenOb
       </Tooltip>
     );
   }
-  switch (token?.type) {
+  switch (token?.internal__Type) {
     case 'color': {
       return (
         <Box

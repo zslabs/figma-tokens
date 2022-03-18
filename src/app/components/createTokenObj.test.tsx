@@ -3,10 +3,18 @@ import { createTokensObject } from './createTokenObj';
 const baseTokens = {
   input: [
     {
-      id: '123', type: 'color', description: 'some color', name: 'global.colors.gray.500', value: '#ff0000',
+      id: '123',
+      type: 'color',
+      description: 'some color',
+      name: 'global.colors.gray.500',
+      value: '#ff0000',
     },
     {
-      id: '123', type: 'color', description: 'some color', name: 'global.colors.gray.400', value: '#ff0000',
+      id: '123',
+      type: 'color',
+      description: 'some color',
+      name: 'global.colors.gray.400',
+      value: '#ff0000',
     },
     {
       id: '123',
@@ -22,6 +30,12 @@ const baseTokens = {
       name: 'global.colors.gray.50',
       value: '#ff0000',
     },
+    {
+      id: '123',
+      description: 'some color',
+      name: 'global.colors.gray.notype',
+      value: '#ff0000',
+    },
   ],
   output: {
     color: {
@@ -32,6 +46,7 @@ const baseTokens = {
               50: {
                 id: '123',
                 type: 'color',
+                __internalType: 'color',
                 description: 'some color',
                 name: 'global.colors.gray.50',
                 value: '#ff0000',
@@ -39,6 +54,7 @@ const baseTokens = {
               400: {
                 id: '123',
                 type: 'color',
+                __internalType: 'color',
                 description: 'some color',
                 name: 'global.colors.gray.400',
                 value: '#ff0000',
@@ -46,24 +62,43 @@ const baseTokens = {
               500: {
                 id: '123',
                 type: 'color',
+                __internalType: 'color',
                 description: 'some color',
                 name: 'global.colors.gray.500',
                 value: '#ff0000',
               },
             },
           },
-        },
-        theme: {
-          colors: {
-            interaction: {
-              background: {
-                default: {
-                  id: '123',
-                  type: 'color',
-                  description: 'some color',
-                  name: 'theme.colors.interaction.background.default',
-                  value: '#ff0000',
+          theme: {
+            colors: {
+              interaction: {
+                background: {
+                  default: {
+                    id: '123',
+                    type: 'color',
+                    __internalType: 'color',
+                    description: 'some color',
+                    name: 'theme.colors.interaction.background.default',
+                    value: '#ff0000',
+                  },
                 },
+              },
+            },
+          },
+        },
+      },
+    },
+    other: {
+      values: {
+        global: {
+          colors: {
+            gray: {
+              notype: {
+                id: '123',
+                __internalType: 'color',
+                description: 'some color',
+                name: 'global.colors.gray.notype',
+                value: '#ff0000',
               },
             },
           },

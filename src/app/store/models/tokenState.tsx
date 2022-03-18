@@ -134,6 +134,7 @@ export const tokenState = createModel<RootModel>()({
     setTokenData: (state, data: { values: SingleTokenObject[]; shouldUpdate: boolean, usedTokenSet?: string[] }) => {
       const values = parseTokenValues(data.values);
       const tokenSets = data.usedTokenSet ? Object.keys(data.values).filter((set) => data.usedTokenSet?.includes(set)) : [Object.keys(values)[0]];
+
       return {
         ...state,
         tokens: values,
@@ -145,6 +146,7 @@ export const tokenState = createModel<RootModel>()({
       const parsedTokens = parseJson(payload);
       parseTokenValues(parsedTokens);
       const values = parseTokenValues({ [state.activeTokenSet]: parsedTokens });
+
       return {
         ...state,
         tokens: {

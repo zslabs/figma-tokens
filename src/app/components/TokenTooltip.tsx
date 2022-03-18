@@ -29,7 +29,7 @@ export default function TokenTooltip({ token, resolvedTokens, shouldResolve = fa
   try {
     const valueToCheck = shouldResolve ? getTokenValue(token.name, resolvedTokens)?.value : token.value;
 
-    if (token.type === 'typography') {
+    if (token.internal__Type === 'typography') {
       if (shouldResolve) {
         return (
           <div>
@@ -89,7 +89,7 @@ export default function TokenTooltip({ token, resolvedTokens, shouldResolve = fa
       );
     }
 
-    if (token.type === 'boxShadow') {
+    if (token.internal__Type === 'boxShadow') {
       return Array.isArray(valueToCheck) ? (
         <div>
           {valueToCheck.map((t, index) => (

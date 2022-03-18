@@ -15,7 +15,7 @@ export default function updateStyles(
     return {
       ...token,
       name,
-      value: transformValue(token.value, token.type),
+      value: transformValue(token.value, token.internal__Type),
     };
   });
   const colorTokens = styleTokens.filter((n) => ['color', 'colors'].includes(n.type));

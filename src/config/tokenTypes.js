@@ -2,7 +2,7 @@ export default {
   sizing: {
     label: 'Size',
     property: 'Size',
-    type: 'sizing',
+    internal__Type: 'sizing',
     schema: {
       options: {
         description: '',
@@ -12,7 +12,7 @@ export default {
   spacing: {
     label: 'Space',
     property: 'Value',
-    type: 'spacing',
+    internal__Type: 'spacing',
     schema: {
       options: {
         description: '',
@@ -22,7 +22,7 @@ export default {
   color: {
     label: 'Color',
     property: 'Color',
-    type: 'color',
+    internal__Type: 'color',
     schema: {
       value: 'color',
       options: {
@@ -35,7 +35,7 @@ export default {
   borderRadius: {
     label: 'Border Radius',
     property: 'Border Radius',
-    type: 'borderRadius',
+    internal__Type: 'borderRadius',
     schema: {
       options: {
         description: '',
@@ -45,7 +45,7 @@ export default {
   borderWidth: {
     label: 'Border Width',
     property: 'Border Width',
-    type: 'borderWidth',
+    internal__Type: 'borderWidth',
     explainer: 'Enter as a number, e.g. 4',
     schema: {
       options: {
@@ -56,7 +56,7 @@ export default {
   opacity: {
     label: 'Opacity',
     property: 'Opacity',
-    type: 'opacity',
+    internal__Type: 'opacity',
     explainer: 'Set as 50% or 0.5',
     schema: {
       options: {
@@ -67,7 +67,7 @@ export default {
   boxShadow: {
     label: 'Box Shadow',
     property: 'Box Shadow',
-    type: 'boxShadow',
+    internal__Type: 'boxShadow',
     schema: {
       value: {
         x: '0',
@@ -75,7 +75,7 @@ export default {
         blur: '0',
         spread: '0',
         color: '#000000',
-        type: 'dropShadow',
+        internal__Type: 'dropShadow',
       },
       options: {
         description: '',
@@ -85,7 +85,7 @@ export default {
   typography: {
     label: 'Typography',
     property: 'Typography',
-    type: 'typography',
+    internal__Type: 'typography',
     schema: {
       value: {
         fontFamily: 'Inter',
@@ -108,7 +108,7 @@ export default {
     help: 'Only works in combination with a Font Weight',
     label: 'Font Family',
     property: 'Font Family',
-    type: 'fontFamilies',
+    internal__Type: 'fontFamilies',
     schema: {
       options: {
         description: '',
@@ -119,7 +119,7 @@ export default {
     help: 'Only works in combination with a Font Family',
     label: 'Font Weight',
     property: 'Font Weight',
-    type: 'fontWeights',
+    internal__Type: 'fontWeights',
     schema: {
       options: {
         description: '',
@@ -130,7 +130,7 @@ export default {
     label: 'Line Height',
     explainer: 'e.g. 100% or 14',
     property: 'Line Height',
-    type: 'lineHeights',
+    internal__Type: 'lineHeights',
     schema: {
       options: {
         description: '',
@@ -140,7 +140,7 @@ export default {
   fontSizes: {
     label: 'Font Size',
     property: 'Font Size',
-    type: 'fontSizes',
+    internal__Type: 'fontSizes',
     schema: {
       options: {
         description: '',
@@ -150,7 +150,7 @@ export default {
   letterSpacing: {
     label: 'Letter Spacing',
     property: 'Letter Spacing',
-    type: 'letterSpacing',
+    internal__Type: 'letterSpacing',
     schema: {
       options: {
         description: '',
@@ -160,7 +160,7 @@ export default {
   paragraphSpacing: {
     label: 'Paragraph Spacing',
     property: 'ParagraphSpacing',
-    type: 'paragraphSpacing',
+    internal__Type: 'paragraphSpacing',
     schema: {
       options: {
         description: '',
@@ -170,7 +170,7 @@ export default {
   textCase: {
     label: 'Text Case',
     property: 'TextCase',
-    type: 'textCase',
+    internal__Type: 'textCase',
     schema: {
       options: {
         description: '',
@@ -181,7 +181,7 @@ export default {
   textDecoration: {
     label: 'Text Decoration',
     property: 'TextDecoration',
-    type: 'textDecoration',
+    internal__Type: 'textDecoration',
     schema: {
       options: {
         description: '',
@@ -192,7 +192,7 @@ export default {
   other: {
     label: 'Other',
     property: 'other',
-    type: 'other',
+    internal__Type: 'other',
     schema: {
       options: {
         description: '',

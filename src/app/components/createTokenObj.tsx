@@ -45,30 +45,41 @@ function transformName(name) {
 }
 
 export function appendTypeToToken(token) {
-  const hasTypeProp = token.type && token.type !== '' && token.type !== 'undefined';
-  const typeToSet = hasTypeProp ? token.type : transformName(token.name.split('.').slice(0, 1).toString());
-  return {
-    ...token,
-    type: typeToSet,
-  };
+  try {
+    const hasTypeProp = token.type && token.type !== '' && token.type !== 'undefined';
+    const typeToSet = hasTypeProp ? token.type : transformName(token.name.split('.').slice(0, 1).toString());
+    return {
+      ...token,
+      internal__Type: typeToSet,
+    };
+  } catch (e) {
+    console.log(e);
+    return token;
+  }
 }
 
 // Creates a tokens object so that tokens are displayed in groups in the UI.
 export function createTokensObject(tokens: SingleTokenObject[], tokenFilter = '') {
-  if (tokens.length > 0) {
-    const obj = tokens.reduce((acc, cur) => {
-      if (tokenFilter === '' || cur.name?.toLowerCase().search(tokenFilter?.toLowerCase()) >= 0) {
-        const hasTypeProp = cur.type && cur.type !== '' && cur.type !== 'undefined';
-        const propToSet = hasTypeProp ? cur.type : transformName(cur.name.split('.').slice(0, 1).toString());
-        acc[propToSet] = acc[propToSet] || { values: {} };
-        acc[propToSet].values = acc[propToSet].values || {};
-        set(acc[propToSet].values, cur.name, { ...cur, type: hasTypeProp ? cur.type : propToSet });
-      }
-      return acc;
-    }, {});
-    return obj;
+  try {
+    if (tokens.length > 0) {
+      const obj = tokens.reduce((acc, cur) => {
+        if (tokenFilter === '' || cur.name?.toLowerCase().search(tokenFilter?.toLowerCase()) >= 0) {
+          const tokenTypeProp = (cur.type && cur.type !== '' && cur.type !== 'undefined') ? cur.type : cur.internal__Type;
+          const propToSet = tokenTypeProp || transformName(cur.name.split('.').slice(0, 1).toString());
+
+          acc[propToSet] = acc[propToSet] || { values: {} };
+          acc[propToSet].values = acc[propToSet].values || {};
+          set(acc[propToSet].values, cur.name, { ...cur, internal__Type: propToSet });
+        }
+        return acc;
+      }, {});
+      return obj;
+    }
+    return {};
+  } catch (e) {
+    console.log(e);
+    return {};
   }
-  return {};
 }
 
 // Takes an array of tokens, transforms them into
@@ -87,6 +98,8 @@ export function mappedTokens(tokens: SingleTokenObject[], tokenFilter: string) {
   );
 
   extend(true, tokenObj, tokenTypes);
+
+  console.log('Token obj mapped', tokenObj);
 
   return Object.entries(tokenObj);
 }

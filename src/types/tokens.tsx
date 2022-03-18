@@ -13,7 +13,7 @@ export type SingleToken = TokenGroup;
 export type NewTokenObject = {
   name: string;
   value: string | TypographyObject | ShadowTokenSingleValue[] | ShadowTokenSingleValue | number;
-  type: TokenType | string | 'undefined';
+  internal__Type: TokenType | string | 'undefined';
   description?: string;
 };
 
@@ -24,15 +24,15 @@ type SingleTokenObjectCommonProperties = {
 
 export type SingleTokenObject =
     | (SingleTokenObjectCommonProperties & {
-      type: 'boxShadow';
+      internal__Type: 'boxShadow';
       value: ShadowTokenSingleValue[] | ShadowTokenSingleValue;
     })
     | (SingleTokenObjectCommonProperties & {
-      type: 'typography';
+      internal__Type: 'typography';
       value: TypographyObject;
     })
     | (SingleTokenObjectCommonProperties & {
-      type: TokenType;
+      internal__Type: TokenType;
       value: string | number;
     });
 

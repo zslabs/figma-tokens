@@ -8,7 +8,7 @@ export default function checkIfAlias(token: SingleTokenObject, allTokens = []): 
     let aliasToken = false;
     if (typeof token === 'string') {
       aliasToken = Boolean(token.toString().match(aliasRegex));
-    } else if (token.type === 'typography') {
+    } else if (token.internal__Type === 'typography') {
       aliasToken = Object.values(token.value).some((typographyToken) => Boolean(typographyToken?.toString().match(aliasRegex)));
     } else {
       aliasToken = checkIfAlias(token.value.toString(), allTokens);

@@ -16,8 +16,8 @@ export default function formatTokens({
     tokens[tokenSet].forEach((token) => {
       const { name, ...tokenWithoutName } = token;
       if (
-        (token.type === 'typography' && expandTypography)
-        || (token.type === 'boxShadow' && expandShadow)
+        (token.internal__Type === 'typography' && expandTypography)
+        || (token.internal__Type === 'boxShadow' && expandShadow)
       ) {
         const expanded = expand(tokenWithoutName.value);
         set(tokenObj, nestUnderParent ? [tokenSet, token.name].join('.') : token.name, { ...expanded });

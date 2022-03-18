@@ -1,13 +1,17 @@
 import set from 'set-value';
-import { appendTypeToToken } from '@/app/components/createTokenObj';
 
 export default function stringifyTokens(tokens, activeTokenSet) {
   const tokenObj = {};
+  console.log('Stringify', tokens);
+
   tokens[activeTokenSet].forEach((token) => {
-    const tokenWithType = appendTypeToToken(token);
-    const { name, ...tokenWithoutName } = tokenWithType;
-    set(tokenObj, token.name, tokenWithoutName);
+    const { name, ...tokenWithoutName } = token;
+    delete tokenWithoutName.internal__Type;
+    delete tokenWithoutName.internal__IsTypeToken;
+    const tokenValue = name.split('.').pop() === 'type' ? tokenWithoutName.value : tokenWithoutName;
+    set(tokenObj, token.name, tokenValue);
   });
+  console.log('Stringify end', tokenObj);
 
   return JSON.stringify(tokenObj, null, 2);
 }
