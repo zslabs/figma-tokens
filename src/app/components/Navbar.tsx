@@ -18,6 +18,7 @@ import { Tabs } from '@/constants/Tabs';
 import Stack from './Stack';
 import { TabButton } from './TabButton';
 import { NavbarUndoButton } from './NavbarUndoButton';
+import { DirtyStateDot } from './DirtyStateDot';
 
 const transformProviderName = (provider: StorageProviderType) => {
   switch (provider) {
@@ -89,7 +90,7 @@ export const Navbar: React.FC = () => {
                   className="relative button button-ghost"
                   disabled={editProhibited}
                 >
-                  {checkForChanges() && <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary-500" />}
+                  {checkForChanges() && <DirtyStateDot />}
 
                   <Icon name="library" />
                 </button>

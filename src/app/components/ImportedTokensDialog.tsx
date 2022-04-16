@@ -9,6 +9,7 @@ import Tooltip from './Tooltip';
 import Icon from './Icon';
 import { activeTokenSetSelector, importedTokensSelector } from '@/selectors';
 import Stack from './Stack';
+import DiffText from './DiffText';
 
 function ImportToken({
   name,
@@ -32,15 +33,15 @@ function ImportToken({
   return (
     <Stack direction="row" justify="between" css={{ padding: '$2 $4' }}>
       <Stack direction="column" gap={1}>
-        <div className="font-semibold text-xs">{name}</div>
+        <div className="text-xs font-semibold">{name}</div>
         <Stack direction="row" align="center" gap={1}>
-          <div className="font-bold text-xxs bg-green-100 text-green-800 p-1 rounded break-all">
+          <DiffText type="addition">
             {typeof value === 'object' ? JSON.stringify(value) : value}
-          </div>
+          </DiffText>
           {oldValue ? (
-            <div className="font-bold text-xxs bg-red-100 text-red-800 p-1 rounded break-all">
+            <DiffText type="deletion">
               {typeof oldValue === 'object' ? JSON.stringify(oldValue) : oldValue}
-            </div>
+            </DiffText>
           ) : null}
         </Stack>
         {(description || oldDescription) && (
@@ -231,7 +232,7 @@ export default function ImportedTokensDialog() {
           </div>
         </div>
         )}
-        <div className="flex justify-between border-t border-gray-300 p-4 ">
+        <div className="flex justify-between p-4 border-t border-gray-300 ">
           <Button variant="secondary" id="button-import-close" onClick={handleClose}>
             Cancel
           </Button>

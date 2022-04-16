@@ -5,6 +5,7 @@ import Button from './Button';
 import Modal from './Modal';
 import { changelogSelector } from '@/selectors';
 import Stack from './Stack';
+import Link from './Link';
 
 type ChangelogItem = {
   _uid: string;
@@ -49,14 +50,11 @@ export default function Changelog() {
               <Heading>{item.title}</Heading>
               <p className="text-xs">{item.excerpt}</p>
               {item.read_more_link && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={item.read_more_link}
-                  className="inline-flex text-xs text-primary-500"
+                <Link
+                  link={item.read_more_link}
                 >
                   {item.read_more_text ? item.read_more_text : 'Read more'}
-                </a>
+                </Link>
               )}
             </Stack>
           ))}
