@@ -3,6 +3,7 @@ import { SingleToken } from '@/types/tokens';
 import useTokens from '@/app/store/useTokens';
 import { TokensContext } from '@/context';
 import { TokenTooltipContentValue } from './TokenTooltipContentValue';
+import Text from '../Text';
 
 type Props = {
   token: SingleToken;
@@ -17,16 +18,16 @@ export const TokenTooltipContent: React.FC<Props> = ({ token }) => {
 
   return (
     <div>
-      <div className="text-xs font-bold text-gray-500">
+      <Text muted size="xsmall" bold>
         {token.name.split('.')[token.name.split('.').length - 1]}
-      </div>
+      </Text>
       <TokenTooltipContentValue token={token} />
       {tokenIsAlias && (
-        <div className="text-gray-400">
-          <TokenTooltipContentValue token={token} shouldResolve />
-        </div>
+      <Text muted size="xsmall">
+        <TokenTooltipContentValue token={token} shouldResolve />
+      </Text>
       )}
-      {token.description && <div className="text-gray-500">{token.description}</div>}
+      {token.description && <Text muted size="xsmall">{token.description}</Text>}
     </div>
   );
 };

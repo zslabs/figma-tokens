@@ -5,6 +5,7 @@ import Heading from '../Heading';
 import Button from '../Button';
 import Modal from '../Modal';
 import Stack from '../Stack';
+import Text from '../Text';
 
 type Props = {
   onClose: () => void
@@ -23,7 +24,7 @@ export default function ExportModal({ onClose }: Props) {
       <Stack direction="column" justify="center" gap={4} css={{ textAlign: 'center' }}>
         <Stack direction="column" gap={2}>
           <Heading>Load a preset</Heading>
-          <p className="text-xs text-gray-600">
+          <Text muted size="xsmall">
             Override your current tokens by applying a preset. Want your preset featured here? Submit it via
             {' '}
             <a
@@ -34,7 +35,7 @@ export default function ExportModal({ onClose }: Props) {
             >
               GitHub
             </a>
-          </p>
+          </Text>
           <Button variant="primary" onClick={handleSetDefault}>
             Apply default preset
           </Button>
