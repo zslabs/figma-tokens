@@ -72,7 +72,6 @@ export function getAliasValue(token: SingleToken | string | number, tokens: Sing
   }
 
   if (returnedValue) {
-    console.log('checkAndEvaluateMath', checkAndEvaluateMath(returnedValue));
     return checkAndEvaluateMath(returnedValue);
   }
   return returnedValue;
