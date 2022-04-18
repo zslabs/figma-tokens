@@ -9,7 +9,6 @@ export function getAliasValue(token: SingleToken | string | number, tokens: Sing
   // @TODO not sure how this will handle typography and boxShadow values. I don't believe it works.
   // The logic was copied from the original function in aliases.tsx
   let returnedValue: string | null = isSingleTokenValueObject(token) ? token.value.toString() : token.toString();
-
   try {
     const tokenReferences = findReferences(returnedValue);
 
@@ -23,12 +22,27 @@ export function getAliasValue(token: SingleToken | string | number, tokens: Sing
           const tokenAliasSplited = nameToLookFor.split('.');
           const tokenAliasSplitedLast = tokenAliasSplited.pop();
           const tokenAliasLastExcluded = tokenAliasSplited.join('.');
-          const foundToken = tokens.find((t) => t.name === nameToLookFor || t.name === tokenAliasLastExcluded);
+          const foundTokens = tokens.filter((t) => t.name.includes(nameToLookFor) || t.name === tokenAliasLastExcluded);
 
-          if (foundToken?.name === nameToLookFor) { return getAliasValue(foundToken, tokens); }
-
-          const candidateProperty = tokenAliasSplitedLast;
-          if (foundToken?.name === tokenAliasLastExcluded && candidateProperty && foundToken.rawValue?.hasOwnProperty(candidateProperty)) return foundToken?.rawValue[candidateProperty];
+          const tokensInObject = [];
+          for (let index = 0; index < foundTokens.length; index++) {
+            if (foundTokens[index].name.indexOf(nameToLookFor) === 0) {
+              if (foundTokens[index].name !== nameToLookFor && foundTokens[index].name[nameToLookFor.length] === '.') {
+                /// object
+                tokensInObject.push(getAliasValue(foundTokens[index], tokens));
+              }
+              if (foundTokens[index].name === nameToLookFor) {
+                /// token
+                return getAliasValue(foundTokens[index], tokens);
+              }
+            }
+            if (foundTokens[index].name === tokenAliasLastExcluded) {
+              // property
+              const candidateProperty = tokenAliasSplitedLast;
+              if (foundTokens[index]?.name === tokenAliasLastExcluded && candidateProperty && foundTokens[index].rawValue?.hasOwnProperty(candidateProperty)) return foundTokens[index]?.rawValue[candidateProperty];
+            }
+          }
+          return tokensInObject;
         }
         return ref;
       });
@@ -58,6 +72,7 @@ export function getAliasValue(token: SingleToken | string | number, tokens: Sing
   }
 
   if (returnedValue) {
+    console.log('checkAndEvaluateMath', checkAndEvaluateMath(returnedValue));
     return checkAndEvaluateMath(returnedValue);
   }
   return returnedValue;
