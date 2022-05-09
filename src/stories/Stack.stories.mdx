@@ -1,23 +1,28 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
 import Stack from '@/app/components/Stack';
 
-<Meta title="Stack">
+<Meta title="Stack"/>
 
 <Story name="Standrad: Stack">
-  <Stack gap={0} ></Stack>
+  <Stack gap={0} direction={'row'} align={'center'} justify={'center'} width={'full'}></Stack>
 </Story>
 
-const Template: ComponentStory<typeof Stack> = (args) =>
-{
-  return (
-    <Stack { ...args } >
-      333
-    </Stack>
-  )
-};
+<ArgsTable of={Stack} />
 
-export const Primary = Template.bind({});
-Primary.args = {
-  direction : 'row',
-  
+export const TemplateStack = (args) => {
+  return (
+    <Stack {...args}>33333333333333ffffffffffffffff</Stack>
+  )
 }
+
+<Canvas>
+  <Story name="Primary" args={{
+    gap: 1,
+    direction: 'column',
+    align: 'start',
+    justify: 'start',
+    wrap: false,
+  }}>
+  {TemplateStack.bind({})}
+  </Story>
+</Canvas>
