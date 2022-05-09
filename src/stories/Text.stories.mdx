@@ -1,0 +1,29 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
+import Text from '@/app/components/Text';
+
+<Meta title='Text'/>
+
+<Story name="Standrad: Text">
+  <Text bold={true} size={'small'}>Figma Token Plugin Compoent Text</Text>
+</Story>
+
+<Story name="bold: false">
+  <Text bold={false} size={'xsmall'}>Figma Token Plugin Compoent Text</Text>
+</Story>
+
+<ArgsTable of={Text} />
+
+export const TemplateText = (args) => {
+  return (
+    <Text {...args}>Figma Token Plugin Compoent Text</Text>
+  )
+}
+
+<Canvas>
+  <Story name="Primary" args={{
+    bold: true,
+    size: 'small'
+  }}>
+    {TemplateText.bind({})}
+  </Story>
+</Canvas>

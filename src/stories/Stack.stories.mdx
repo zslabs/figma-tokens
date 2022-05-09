@@ -1,14 +1,11 @@
-import React from 'react';
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
 import Stack from '@/app/components/Stack';
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+<Meta title="Stack">
 
-export default {
-  title: 'Stack',
-  component: Stack,
-  argTypes: {
-  },
-} as ComponentMeta<typeof Stack>;
+<Story name="Standrad: Stack">
+  <Stack gap={0} ></Stack>
+</Story>
 
 const Template: ComponentStory<typeof Stack> = (args) =>
 {
