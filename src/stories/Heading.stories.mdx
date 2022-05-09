@@ -1,0 +1,26 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
+import Heading from '@/app/components/Heading';
+
+<Meta title="Heading"/>
+
+<Story name="standrad: heading">
+  <Heading size="small">Figma Token Plugin Component Heading </Heading>
+</Story>
+
+<ArgsTable of={Heading} />
+
+export const TemplateHeading= (args) => {
+  return (
+    <Heading {...args}>
+      Figma Token Plugin Component Heading
+    </Heading>
+  )
+}
+
+<Canvas>
+  <Story name="Primary" args={{
+    size: 'small'
+  }}>
+    {TemplateHeading.bind({})}
+  </Story>
+</Canvas> 

@@ -9,12 +9,18 @@ export default {
   component: Button,
   argTypes: {
   },
+  args:{
+    size: 'small',
+    type: 'button',
+    icon: true,
+  }
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) =>{
 
   return (
-    <Button { ...args } />
+    <Button {...args}>Button</Button>
+
   )
 }
 
