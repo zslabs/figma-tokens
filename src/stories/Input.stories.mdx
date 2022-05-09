@@ -1,0 +1,25 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
+import Input from '@/app/components/Input';
+
+<Meta title="Input"/>
+
+<Story name="Standrad: Input">
+  <Input placeholder="Figma Token Plugin Component Heading"></Input>
+</Story>
+
+<ArgsTable of={Input} />
+
+export const TemplateHeading= (args) => {
+  return (
+    <Input {...args}>
+    </Input>
+  )
+}
+
+<Canvas>
+  <Story name="Primary" args={{
+    placeholder: 'Figma'
+  }}>
+    {TemplateHeading.bind({})}
+  </Story>
+</Canvas> 
