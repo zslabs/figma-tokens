@@ -1,0 +1,24 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import ConfirmLocalStorageModal from "@/app/components/modals/ConfirmLocalStorageModal";
+
+<Meta title="ConfirmLocalStorageModal" />
+
+<Story name="ConfirmLocalStorageModal">
+  <ConfirmLocalStorageModal isOpen={true} />
+</Story>
+
+<ArgsTable of={ConfirmLocalStorageModal}/>
+
+export const TemplateConfirmLocalStorageModal = (args) => {
+  return (
+    <ConfirmLocalStorageModal isOpen={true}/>
+  )
+}
+
+<Canvas>
+  <Story name="Primary" args={{
+    isOpen: true,
+  }}>
+    {TemplateConfirmLocalStorageModal.bind({})}
+  </Story>
+</Canvas>
