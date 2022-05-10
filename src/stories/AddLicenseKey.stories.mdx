@@ -1,0 +1,12 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import AddLicenseKey from "@/app/components/AddLicenseKey/AddLicenseKey";
+import { Provider } from "react-redux";
+import { store } from '@/app/store';
+
+<Meta title="AddLicenseKey"/>
+
+<Story name="AddLicenseKey">
+  <Provider store={store}>
+    <AddLicenseKey />
+  </Provider>
+</Story>
