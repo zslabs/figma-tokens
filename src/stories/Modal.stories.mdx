@@ -1,0 +1,35 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from '@storybook/addon-docs/blocks';
+import Modal from '@/app/components/Modal';
+import Stack from '@/app/components/Stack';
+import Heading from '@/app/components/Heading';
+
+<Meta title="Modal" />
+
+<Story name="Standrad">
+  <Modal title={'standard'} full={false} large={false} isOpen={true} showClose={true}>
+    <Stack gap={4} direction="column">
+      <Heading>Standard</Heading>
+        <p className="text-xs">
+          This is an early version of a standard Modal
+        </p>
+    </Stack>
+  </Modal>
+</Story>
+
+<ArgsTable of={Modal} />
+
+export const TemplateModal = (args) => {
+  return <Modal {...args}></Modal>;
+};
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      title: 'primary',
+      isOpen: true,
+    }}
+  >
+    {TemplateModal.bind({})}
+  </Story>
+</Canvas>

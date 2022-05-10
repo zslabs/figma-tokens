@@ -1,29 +1,32 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs/blocks";
-import Input from '@/app/components/Input';
+import TokenGroupHeading from '@/app/components/TokenGroupHeading';
+import { Provider } from 'react-redux';
+import { store } from '@/app/store';
 
-<Meta title="Input"/>
+<Meta title="TokenGroupHeading"/>
 
-<Story name="Standrad: Input">
-  <Input placeholder="Figma Token Plugin Component Heading"></Input>
+<ArgsTable of={TokenGroupHeading} />
+
+<Story name="Standrad: TokenGroupHeading">
+  <Provider store={store}>
+    <TokenGroupHeading label="standarad" path="standard" id="listing" />
+  </Provider>
 </Story>
 
-<ArgsTable of={Input} />
-
-export const TemplateInput = (args) => {
+export const TemplateTokenGroupHeading = (args) => {
   return (
-    <Input {...args}>
-    </Input>
+    <Provider store={store}>
+      <TokenGroupHeading {...args} />
+  </Provider>
   )
 }
 
 <Canvas>
   <Story name="Primary" args={{
-    name: 'Figma Token Plugin Input Component',
-    autofocus: true,
-    error: '',
-    required: true,
-    placeholder: 'Figma',
+    label: "Primary",
+    path: "default.token",
+    id: "listing",
   }}>
-    {TemplateInput.bind({})}
+    {TemplateTokenGroupHeading.bind({})}
   </Story>
 </Canvas>
