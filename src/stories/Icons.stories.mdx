@@ -1,0 +1,14 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import { IconAdd } from "@/app/components/icons"
+
+<Meta title="Icons"/>
+
+export const TemplateIcons = () => {
+  return (
+    <IconAdd />
+  )
+}
+
+<Story name="Icons">
+  {TemplateIcons.bind({})}
+</Story>
