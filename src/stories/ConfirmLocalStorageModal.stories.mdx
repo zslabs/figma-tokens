@@ -23,19 +23,3 @@ export const ConfirmLocalStorageModalStoryPreview = () => {
 <Story name="Default">
   <ConfirmLocalStorageModalStoryPreview />
 </Story>
-
-<ArgsTable of={ConfirmLocalStorageModal}/>
-
-export const TemplateConfirmLocalStorageModal = (args) => {
-  return (
-    <ConfirmLocalStorageModal isOpen={true}/>
-  )
-}
-
-<Canvas>
-  <Story name="Buttons aligned right" args={{
-    isOpen: true,
-  }}>
-    {TemplateConfirmLocalStorageModal.bind({})}
-  </Story>
-</Canvas>
