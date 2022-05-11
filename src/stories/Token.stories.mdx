@@ -7,25 +7,17 @@ import { SingleToken } from '@/types/tokens';
 
 <Meta title="Token"/>
 
-<Story name="standard token">
-	<Provider store={store}>
-		<TokenButton type={TokenTypes} displayType="GRID" token="standard.tokenbutton" draggedToken={SingleToken} dragOverToken={SingleToken}/>
-	</Provider>
-</Story>
-
 <ArgsTable of={TokenButton}/>
 
-export const TemplateToken = (args) => {
+export const TokenDefaultStory = (args) => {
 	return (
-		<Provider store={store}>
-			<TokenButton {...args}/>
-		</Provider>
+		<TokenButton />
 	)
 }
 
 <Canvas>
 	<Story name="Primary" args={{
 	}}>
-		{TemplateToken.bind({})}
+		{TokenDefaultStory.bind({})}
 	</Story>
 </Canvas>

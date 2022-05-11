@@ -5,22 +5,20 @@ import Heading from '@/app/components/Heading';
 
 <Meta title="Modal" />
 
-<Story name="Standrad">
-  <Modal title={'standard'} full={false} large={false} isOpen={true} showClose={true}>
-    <Stack gap={4} direction="column">
-      <Heading>Standard</Heading>
-        <p className="text-xs">
-          This is an early version of a standard Modal
-        </p>
-    </Stack>
-  </Modal>
-</Story> 
-
 <ArgsTable of={Modal} />
 
-export const TemplateModal = (args) => {
-  return <Modal {...args}></Modal>;
-};
+export const ModalDefaultStory = (args) => {
+  return (
+    <Modal title={'standard'} full={false} large={false} isOpen={true} showClose={true}>
+      <Stack gap={4} direction="column">
+        <Heading>Standard</Heading>
+          <p className="text-xs">
+            This is an early version of a standard Modal
+          </p>
+      </Stack>
+    </Modal>
+  )
+}
 
 <Canvas>
   <Story

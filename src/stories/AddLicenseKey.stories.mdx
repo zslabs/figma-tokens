@@ -3,15 +3,17 @@ import AddLicenseKey from "@/app/components/AddLicenseKey/AddLicenseKey";
 import { Provider } from "react-redux";
 import { store } from '@/app/store';
 
-<Meta title="AddLicenseKey"/>
+<Meta title="AddLicenseKey" component={AddLicenseKey}/>
 
 export const AddLicenseKeyDefaultStory = () => {
   return (
     <AddLicenseKey />
   )
 }
-<Story name="Default">
-  <Provider store={store}>
-    <AddLicenseKeyDefaultStory />
-  </Provider>
-</Story>
+<Canvas>
+  <Story name="Default">
+    <Provider store={store}>
+      <AddLicenseKeyDefaultStory />
+    </Provider>
+  </Story>
+</Canvas>

@@ -6,7 +6,7 @@ import ExportModal from '@/app/components/modals/ExportModal';
 import Button from '@/app/components/Button/Button';
 
 
-<Meta title="ExportModal"/>
+<Meta title="ExportModal" component={ExportModal}/>
 
 export const ExportModalDefaultStory = () => {
 	const [isOpen, setIsOpen] = useState(true);
@@ -19,6 +19,8 @@ export const ExportModalDefaultStory = () => {
 	)
 }
 
-<Story name="Default" >
-	<ExportModalDefaultStory />
-</Story>
+<Canvas>
+	<Story name="Default" >
+		<ExportModalDefaultStory />
+	</Story>
+</Canvas>

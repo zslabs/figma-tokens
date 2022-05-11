@@ -7,13 +7,7 @@ import { store } from '@/app/store';
 
 <ArgsTable of={TokenGroupHeading} />
 
-<Story name="Standrad: TokenGroupHeading">
-  <Provider store={store}>
-    <TokenGroupHeading label="standarad" path="standard" id="listing" />
-  </Provider>
-</Story>
-
-export const TemplateTokenGroupHeading = (args) => {
+export const TokenGroupHeadingDefaultStory = (args) => {
   return (
     <Provider store={store}>
       <TokenGroupHeading {...args} />
@@ -27,6 +21,6 @@ export const TemplateTokenGroupHeading = (args) => {
     path: "default.token",
     id: "listing",
   }}>
-    {TemplateTokenGroupHeading.bind({})}
+    {TokenGroupHeadingDefaultStory.bind({})}
   </Story>
 </Canvas>
