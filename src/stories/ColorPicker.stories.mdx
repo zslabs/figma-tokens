@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
 import ColorPicker from "@/app/components/ColorPicker";
 
-<Meta title="ColorPicker" />
+<Meta title="ColorPicker" component={ColorPicker}/>
 
-export const ColorPickerDefaultStory = () => {
+<ArgsTable of={args}/>
+
+export const ColorPickerDefaultStory = (args) => {
   const [value, setValue] = useState(null);
   return (
     <ColorPicker 

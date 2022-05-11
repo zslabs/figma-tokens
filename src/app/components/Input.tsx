@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { styled } from '@/stitches.config';
-import IconVisibility from './icons/IconVisibiltyOn';
+import IconVisibility from './icons/IconVisibilityOn';
 import IconVisibilityOff from './icons/IconVisibilityOff';
 import Box from './Box';
 import Stack from './Stack';

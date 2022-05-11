@@ -1,24 +1,30 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
 import  Button  from '@/app/components/Button/Button';
 
-<Meta title="Button" />
-
-export const ButtonDefaultStory = () =>{
-  return (
-    <Button>Button</Button>
-  )
-}
+<Meta title="Button" component={Button}/>
 
 <ArgsTable of={args}/>
 
-<Story name="Primary">
-  <ButtonDefaultStory variant="primary"/>
-</Story>
+export const ButtonDefaultStory = (args) =>{
+  return (
+    <Button
+      type={args.type}
+      form={args.form}
+      variant={args.variant}
+      onClick={args.onClick}
+      size={args.size}
+      href={args.href}
+      download={args.download}
+      disabled={args.disabled}
+      id={args.id}
+      icon={args.icon}
+      buttonRef={args.buttonRef}
+    >
+      Button
+    </Button>
+  )
+}
 
-<Story name="Secondary">
-  <ButtonDefaultStory variant="Secondary"/>
-</Story>
-
-<Story name="Ghost">
-  <ButtonDefaultStory variant="Ghost"/>
+<Story name="Button">
+  {ButtonDefaultStory.bind({})}
 </Story>
