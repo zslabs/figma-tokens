@@ -3,22 +3,22 @@ import  Button  from '@/app/components/Button/Button';
 
 <Meta title="Button" />
 
-<Story name="Standard:Button">
-  <Button type='button'></Button>
-</Story>
-
-<ArgsTable of={Input} />
-
-export const TemplateButton = (args) =>{
+export const ButtonDefaultStory = () =>{
   return (
-    <Button {...args}>Button</Button>
+    <Button>Button</Button>
   )
 }
 
-<Canvas>
-  <Story name="Primary" args={{
-    variant: 'primary'
-  }}>
-    {TemplateButton.bind({})}
-  </Story>
-</Canvas> 
+<ArgsTable of={args}/>
+
+<Story name="Primary">
+  <ButtonDefaultStory variant="primary"/>
+</Story>
+
+<Story name="Secondary">
+  <ButtonDefaultStory variant="Secondary"/>
+</Story>
+
+<Story name="Ghost">
+  <ButtonDefaultStory variant="Ghost"/>
+</Story>

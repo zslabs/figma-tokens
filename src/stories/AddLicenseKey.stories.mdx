@@ -5,9 +5,13 @@ import { store } from '@/app/store';
 
 <Meta title="AddLicenseKey"/>
 
-
-<Story name="AddLicenseKey">
-  <Provider store={store}>
+export const AddLicenseKeyDefaultStory = () => {
+  return (
     <AddLicenseKey />
+  )
+}
+<Story name="Default">
+  <Provider store={store}>
+    <AddLicenseKeyDefaultStory />
   </Provider>
 </Story>
