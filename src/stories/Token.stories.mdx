@@ -11,7 +11,9 @@ import { SingleToken } from '@/types/tokens';
 
 export const TokenDefaultStory = (args) => {
 	return (
-		<TokenButton />
+		<Provider store={store}>
+			<TokenButton />
+		</Provider>
 	)
 }
 
