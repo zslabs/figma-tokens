@@ -1,7 +1,16 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
 import  Button  from '@/app/components/Button/Button';
 
-<Meta title="Button" component={Button}/>
+<Meta 
+  title="Button" 
+  component={Button}
+  argTypes={{
+    variant: {
+      options: ['primary', 'secondary', 'ghost'],
+      controls: { type: 'radio' }
+    },
+  }}  
+/>
 
 <ArgsTable of={args}/>
 

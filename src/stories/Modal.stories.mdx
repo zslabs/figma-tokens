@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import { Meta, Story, ArgsTable, Canvas, Preview } from '@storybook/addon-docs';
 import Modal from '@/app/components/Modal';
 import Stack from '@/app/components/Stack';
 import Heading from '@/app/components/Heading';
+import Button from '@/app/components/Button/Button';
 
 <Meta title="Modal" />
 
 <ArgsTable of={Modal} />
 
 export const ModalDefaultStory = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Modal title={'standard'} full={false} large={false} isOpen={true} showClose={true}>
+    <>
+    <Button onClick={() => setIsOpen(true)}>
+      Click to Open Modal
+    </Button>
+    <Modal isOpen={isOpen} close={() => setIsOpen(false)} {...args}>
       <Stack gap={4} direction="column">
         <Heading>Standard</Heading>
           <p className="text-xs">
@@ -17,6 +24,7 @@ export const ModalDefaultStory = (args) => {
           </p>
       </Stack>
     </Modal>
+    </>
   )
 }
 
@@ -25,9 +33,10 @@ export const ModalDefaultStory = (args) => {
     name="Primary"
     args={{
       title: 'primary',
-      isOpen: true,
+      full: true,
+      footer: 'Standard Modal',
     }}
   >
-    {TemplateModal.bind({})}
+    {ModalDefaultStory.bind({})}
   </Story>
 </Canvas>
