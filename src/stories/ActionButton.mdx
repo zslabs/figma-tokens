@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import ActionButton from "@/app/components/ActionButton";
+
+<Meta title="ActionButton" component={ActionButton} />
+
+<ArgsTable of={ActionButton}/>
+
+export const ActionButtonDefaultStory = (args) => {
+  return (
+    <ActionButton/>
+  )
+}
+
+<Story name="Default">
+  <ActionButtonDefaultStory/>
+</Story>

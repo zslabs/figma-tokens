@@ -8,11 +8,14 @@ module.exports = {
   ],
   framework: "@storybook/react",
   webpackFinal: async (config, { configType }) => {
+    console.log("before", config.module.rules);
     config.resolve.alias['@'] = path.resolve(__dirname, '../src/');
+    // const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test( "/\.(svg|ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/"));
+    // fileLoaderRule.exclude = /\.svg$/
     config.module.rules.push(
       { test: /\.css$/, loader: [{ loader: 'style-loader' }, { loader: 'css-loader' }]},
-      { test: /\.svg$/, loader: [{ loader: 'svg-url-loader' },{ loader: 'react-svg-loader'}]},
     );
+    console.log("after", config.module.rules);
     return config;
   },
 }

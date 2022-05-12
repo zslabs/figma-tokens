@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import CreateBranchModal from "@/app/components/modals/CreateBranchModal";
+
+<Meta title="CreateBranchModal" component={CreateBranchModal} />
+
+<ArgsTable of={CreateBranchModal}/>
+
+export const CreateBranchModalDefaultStory = (args) => {
+  return (
+    <CreateBranchModal/>
+  )
+}
+
+<Story name="Default">
+  <CreateBranchModal/>
+</Story>

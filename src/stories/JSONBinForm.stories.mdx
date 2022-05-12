@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import JSONBinForm from "@/app/components/modals/StorageItemForm/JSONBinForm";
+
+<Meta title="JSONBinForm" component={JSONBinForm} />
+
+<ArgsTable of={JSONBinForm}/>
+
+export const JSONBinFormDefaultStory = (args) => {
+  return (
+    <JSONBinForm/>
+  )
+}
+
+<Story name="Default">
+  <JSONBinFormDefaultStory/>
+</Story>

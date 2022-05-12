@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import CreateStorageItemModal from "@/app/components/modals/CreateStorageItemModal";
+
+<Meta title="CreateStorageItemModal" component={CreateStorageItemModal} />
+
+<ArgsTable of={CreateStorageItemModal}/>
+
+export const CreateStorageItemModalDefaultStory = (args) => {
+  return (
+    <CreateStorageItemModal/>
+  )
+}
+
+<Story name="Default">
+  <CreateStorageItemModalDefaultStory/>
+</Story>
