@@ -1,4 +1,8 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import { Provider } from "react-redux";
+
+import { store } from '@/app/store';
+
 import { MoreButton } from "@/app/components/MoreButton/MoreButton";
 
 <Meta title="MoreButton" component={MoreButton} />
@@ -7,7 +11,9 @@ import { MoreButton } from "@/app/components/MoreButton/MoreButton";
 
 export const MoreButtonDefaultStory = (args) => {
   return (
-    <MoreButton/>
+    <Provider store={store}>
+      <MoreButton/>
+    </Provider>
   )
 }
 

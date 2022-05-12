@@ -1,4 +1,8 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import { Provider } from "react-redux";
+
+import { store } from '@/app/store';
+
 import PresetModal from "@/app/components/modals/PresetModal";
 
 <Meta title="PresetModal" component={PresetModal} />
@@ -7,7 +11,9 @@ import PresetModal from "@/app/components/modals/PresetModal";
 
 export const PresetModalDefaultStory = (args) => {
   return (
-    <PresetModal/>
+    <Provider store={store}>
+      <PresetModal/>
+    </Provider>
   )
 }
 
