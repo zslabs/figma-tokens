@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import TabButton from "@/app/components/TabButton";
+
+<Meta title="TabButton" component={TabButton} />
+
+<ArgsTable of={TabButton}/>
+
+export const TabButtonDefaultStory = (args) => {
+  return (
+    <TabButton/>
+  )
+}
+
+<Story name="Default">
+  <TabButtonDefaultStory/>
+</Story>

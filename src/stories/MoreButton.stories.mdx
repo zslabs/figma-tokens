@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import MoreButton from "@/app/components/MoreButton";
+
+<Meta title="MoreButton" component={MoreButton} />
+
+<ArgsTable of={MoreButton}/>
+
+export const MoreButtonDefaultStory = (args) => {
+  return (
+    <MoreButton/>
+  )
+}
+
+<Story name="Default">
+  <MoreButtonDefaultStory/>
+</Story>

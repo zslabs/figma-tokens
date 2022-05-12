@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import ThemeSelector from "@/app/components/ThemeSelector";
+
+<Meta title="ThemeSelector" component={ThemeSelector} />
+
+<ArgsTable of={ThemeSelector}/>
+
+export const ThemeSelectorDefaultStory = (args) => {
+  return (
+    <ThemeSelector/>
+  )
+}
+
+<Story name="Default">
+  <ThemeSelectorDefaultStory/>
+</Story>
