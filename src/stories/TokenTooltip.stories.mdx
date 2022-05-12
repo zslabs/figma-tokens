@@ -1,0 +1,16 @@
+import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import TokenTooltip from "@/app/components/TokenTooltip";
+
+<Meta title="TokenTooltip" component={TokenTooltip} />
+
+<ArgsTable of={TokenTooltip}/>
+
+export const TokenTooltipDefaultStory = (args) => {
+  return (
+    <TokenTooltip/>
+  )
+}
+
+<Story name="Default">
+  <TokenTooltipDefaultStory/>
+</Story>
