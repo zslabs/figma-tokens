@@ -1,16 +1,16 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
-import TokenSetListOrTree from "@/app/components/TokenSetListOrTree";
+import URLForm from "@/app/components/StorageItemForm/URLForm";
 
-<Meta title="TokenSetListOrTree" component={TokenSetListOrTree} />
+<Meta title="URLForm" component={URLForm} />
 
-<ArgsTable of={TokenSetListOrTree}/>
+<ArgsTable of={URLForm}/>
 
-export const TokenSetListOrTreeDefaultStory = (args) => {
+export const URLFormDefaultStory = (args) => {
   return (
-    <TokenSetListOrTree/>
+    <URLForm/>
   )
 }
 
 <Story name="Default">
-  <TokenSetListOrTreeDefaultStory/>
+  <URLFormDefaultStory/>
 </Story>

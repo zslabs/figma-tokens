@@ -1,5 +1,7 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
-import ThemeSelector from "@/app/components/ThemeSelector";
+import { Provider } from "react-redux";
+import { store } from '@/app/store';
+import { ThemeSelector } from "@/app/components/ThemeSelector";
 
 <Meta title="ThemeSelector" component={ThemeSelector} />
 
@@ -7,7 +9,9 @@ import ThemeSelector from "@/app/components/ThemeSelector";
 
 export const ThemeSelectorDefaultStory = (args) => {
   return (
-    <ThemeSelector/>
+    <Provider store={store}>
+      <ThemeSelector/>
+    </Provider>
   )
 }
 

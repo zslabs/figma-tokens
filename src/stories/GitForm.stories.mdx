@@ -1,16 +1,16 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
-import EditStorageItemModal from "@/app/components/modals/StorageItemForm/EditStorageItemModal";
+import GitForm from "@/app/components/StorageItemForm/GitForm";
 
-<Meta title="EditStorageItemModal" component={EditStorageItemModal} />
+<Meta title="GitForm" component={GitForm} />
 
-<ArgsTable of={EditStorageItemModal}/>
+<ArgsTable of={GitForm}/>
 
-export const EditStorageItemModalDefaultStory = (args) => {
+export const GitFormDefaultStory = (args) => {
   return (
-    <EditStorageItemModal/>
+    <GitForm/>
   )
 }
 
 <Story name="Default">
-  <EditStorageItemModalDefaultStory/>
+  <GitFormDefaultStory/>
 </Story>
