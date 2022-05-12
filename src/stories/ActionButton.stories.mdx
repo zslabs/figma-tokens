@@ -7,12 +7,18 @@ import ActionButton from "@/app/components/ActionButton";
 
 export const ActionButtonDefaultStory = (args) => {
   return (
-    <ActionButton/>
+    <ActionButton 
+      text="ActionButton" 
+      variant={args.variant}
+    />
   )
 }
 
 <Canvas>
-  <Story name="Default">
+  <Story name="Default" args={{
+    variant: args.variant,
+    disabled: args.disabled,
+  }}>
     {ActionButtonDefaultStory.bind({})}
   </Story>
 </Canvas>
