@@ -17,6 +17,8 @@ export const EditStorageItemModalDefaultStory = (args) => {
   )
 }
 
-<Story name="Default">
-  <EditStorageItemModalDefaultStory/>
-</Story>
+<Canvas>
+  <Story name="Default">
+    {EditStorageItemModalDefaultStory.bind({})}
+  </Story>
+</Canvas>

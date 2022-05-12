@@ -11,6 +11,8 @@ export const ActionButtonDefaultStory = (args) => {
   )
 }
 
-<Story name="Default">
-  <ActionButtonDefaultStory/>
-</Story>
+<Canvas>
+  <Story name="Default">
+    {ActionButtonDefaultStory.bind({})}
+  </Story>
+</Canvas>

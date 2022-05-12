@@ -7,13 +7,14 @@ import { store } from '@/app/store';
 
 export const AddLicenseKeyDefaultStory = () => {
   return (
-    <AddLicenseKey />
+    <Provider store={store}>
+      <AddLicenseKey />
+    </Provider>
   )
 }
+
 <Canvas>
   <Story name="Default">
-    <Provider store={store}>
-      <AddLicenseKeyDefaultStory />
-    </Provider>
+    {AddLicenseKeyDefaultStory.bind({})}
   </Story>
 </Canvas>

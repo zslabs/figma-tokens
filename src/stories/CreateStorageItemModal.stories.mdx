@@ -17,6 +17,8 @@ export const CreateStorageItemModalDefaultStory = (args) => {
   )
 }
 
-<Story name="Default">
-  <CreateStorageItemModalDefaultStory/>
-</Story>
+<Canvas>
+  <Story name="Default">
+    {CreateStorageItemModalDefaultStory.bind({})}
+  </Story>
+</Canvas>

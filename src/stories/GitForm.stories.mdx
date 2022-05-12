@@ -11,6 +11,8 @@ export const GitFormDefaultStory = (args) => {
   )
 }
 
-<Story name="Default">
-  <GitFormDefaultStory/>
-</Story>
+<Canvas>
+  <Story name="Default">
+    {GitFormDefaultStory.bind({})}
+  </Story>
+</Canvas>

@@ -17,6 +17,8 @@ export const CreateBranchModalDefaultStory = (args) => {
   )
 }
 
-<Story name="Default">
-  <CreateBranchModal/>
-</Story>
+<Canvas>
+  <Story name="Default">
+    {CreateBranchModalDefaultStory.bind({})}
+  </Story>
+</Canvas>
