@@ -1,4 +1,8 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import { Provider } from "react-redux";
+
+import { store } from '@/app/store';
+
 import CreateBranchModal from "@/app/components/modals/CreateBranchModal";
 
 <Meta title="CreateBranchModal" component={CreateBranchModal} />
@@ -7,7 +11,9 @@ import CreateBranchModal from "@/app/components/modals/CreateBranchModal";
 
 export const CreateBranchModalDefaultStory = (args) => {
   return (
-    <CreateBranchModal/>
+    <Provider store={store}>
+      <CreateBranchModal/>
+    </Provider>
   )
 }
 

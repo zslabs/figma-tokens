@@ -1,4 +1,8 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
+import { Provider } from "react-redux";
+
+import { store } from '@/app/store';
+
 import CreateStorageItemModal from "@/app/components/modals/CreateStorageItemModal";
 
 <Meta title="CreateStorageItemModal" component={CreateStorageItemModal} />
@@ -7,7 +11,9 @@ import CreateStorageItemModal from "@/app/components/modals/CreateStorageItemMod
 
 export const CreateStorageItemModalDefaultStory = (args) => {
   return (
-    <CreateStorageItemModal/>
+    <Provider store={store}>
+      <CreateStorageItemModal/>
+    </Provider>
   )
 }
 
