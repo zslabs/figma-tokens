@@ -1,13 +1,23 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
 import URLForm from "@/app/components/StorageItemForm/URLForm";
 
-<Meta title="URLForm" component={URLForm} />
+<Meta 
+  title="URLForm" 
+  component={URLForm} 
+  args={{
+    values: {
+      name: '', 
+      headers: '',
+      url: '' 
+    }
+  }}
+/>
 
 <ArgsTable of={URLForm}/>
 
 export const URLFormDefaultStory = (args) => {
   return (
-    <URLForm/>
+    <URLForm values={args.values}/>
   )
 }
 

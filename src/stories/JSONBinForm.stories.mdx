@@ -6,11 +6,9 @@ import JSONBinForm from "@/app/components/StorageItemForm/JSONBinForm";
   component={JSONBinForm}
   args={{
     values: {
+      name: '', 
       secret: '',
-      id: '',
-      branch: '',
-      filePath: '',
-      baseUrl: '',
+      id: '', 
     }
   }}
 />
@@ -19,7 +17,9 @@ import JSONBinForm from "@/app/components/StorageItemForm/JSONBinForm";
 
 export const JSONBinFormDefaultStory = (args) => {
   return (
-    <JSONBinForm/>
+    <>
+    <JSONBinForm values={args.values}/>
+    </>
   )
 }
 
