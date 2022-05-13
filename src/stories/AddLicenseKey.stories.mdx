@@ -1,14 +1,19 @@
 import { Meta, Story, ArgsTable, Canvas, Preview } from "@storybook/addon-docs";
-import AddLicenseKey from "@/app/components/AddLicenseKey/AddLicenseKey";
 import { Provider } from "react-redux";
+
 import { store } from '@/app/store';
+
+import AddLicenseKey from "@/app/components/AddLicenseKey/AddLicenseKey";
+import Box from "@/app/components/Box";
 
 <Meta title="AddLicenseKey" component={AddLicenseKey}/>
 
 export const AddLicenseKeyDefaultStory = () => {
   return (
     <Provider store={store}>
-      <AddLicenseKey />
+      <Box css={{ padding: '$5', overflowY: 'scroll' }} className="content scroll-container">
+        <AddLicenseKey />
+      </Box>
     </Provider>
   )
 }

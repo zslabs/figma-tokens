@@ -17,10 +17,9 @@ import ColorPicker from "@/app/components/ColorPicker";
 export const ColorPickerDefaultStory = (args) => {
   const [value, setValue] = useState(null);
   return (
-    <ColorPicker 
+    <ColorPicker
       value={value}
       onChange={(v) => setValue(v)}
-      {...args}
     />
   );
 };
