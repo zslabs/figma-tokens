@@ -1,4 +1,6 @@
-import { getTokensStoredOnDocument, getUsedTokenSetsOnDocument, mergeTokens } from 'dist/usefigmatokens.js';
+const {
+  getTokensStoredOnDocument, getUsedTokenSetsOnDocument, mergeTokens, getResolvedTokens,
+} = require('./dist/useFigmaTokens');
 
 // This plugin creates 5 rectangles on the screen.
 
@@ -7,7 +9,11 @@ import { getTokensStoredOnDocument, getUsedTokenSetsOnDocument, mergeTokens } fr
 // a full browser environment (see documentation).
 
 const stored = getTokensStoredOnDocument();
+const tokenSets = getUsedTokenSetsOnDocument();
+const resolved = getResolvedTokens();
 console.log('Stored', stored);
+console.log('sets', tokenSets);
+console.log('merged', resolved);
 
 // Make sure to close the plugin when you're done. Otherwise the plugin will
 // keep running, which shows the cancel button at the bottom of the screen.
