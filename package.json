@@ -14,6 +14,7 @@
     "build:cy": "cross-env LAUNCHDARKLY_FLAGS=tokenThemes,gitBranchSelector yarn build",
     "build:watch": "concurrently 'yarn watch-css' 'yarn watch-js'",
     "build-transform": "webpack --mode=production --config webpack-transform.config.js",
+    "build-usefigmatokens": "webpack --mode=production --config webpack-usefigmatokens.config.js",
     "prettier:format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' ",
     "test": "cross-env LAUNCHDARKLY_FLAGS=tokenThemes,gitBranchSelector jest",
     "svgr": "svgr -d src/icons/ assets/",
