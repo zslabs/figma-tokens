@@ -3,7 +3,7 @@ import { mergeTokenGroups, resolveTokenValues } from '@/plugin/tokenHelpers';
 import { UsedTokenSetsMap } from '@/types';
 import { SingleToken } from '@/types/tokens';
 
-type StoredTokenReference = { [x: string]: string }[];
+type StoredTokenReference = { [x: string]: string };
 
 function getTokensStoredOnDocument(): Record<string, SingleToken<true, unknown>[]> {
   const tokens = figma.root.getSharedPluginData('tokens', 'values');
@@ -34,12 +34,14 @@ function getTokensByKey(node: BaseNode, key: Properties) {
 
 function getTokensOnNode(node: BaseNode) {
   const keys = node.getSharedPluginDataKeys('tokens');
-  const tokens: StoredTokenReference = [];
+  let tokens: StoredTokenReference = {};
   keys.forEach((key: string) => {
     if (!Object.keys(Properties).includes(key)) {
       return;
     }
-    Object.assign(tokens, getTokensByKey(node, key as Properties));
+    tokens = {
+      ...tokens, ...getTokensByKey(node, key as Properties),
+    };
   });
   return tokens;
 }

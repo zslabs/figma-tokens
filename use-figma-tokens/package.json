@@ -1,6 +1,6 @@
 {
   "name": "@six7/figma-tokens-helpers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Helper functions for using Figma Tokens data",
   "main": "index.js",
   "scripts": {
