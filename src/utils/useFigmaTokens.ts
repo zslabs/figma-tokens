@@ -39,7 +39,7 @@ function getTokensOnNode(node: BaseNode) {
     if (!Object.keys(Properties).includes(key)) {
       return;
     }
-    tokens.push(getTokensByKey(node, key as Properties));
+    Object.assign(tokens, getTokensByKey(node, key as Properties));
   });
   return tokens;
 }
