@@ -1,0 +1,20 @@
+{
+    "name": "@six7/figma-tokens-helpers",
+    "version": "0.0.1",
+    "description": "Helper functions for using Figma Tokens data",
+    "main": "code.js",
+    "scripts": {
+      "build": "node ./esbuild.js"
+    },
+    "author": "",
+    "files": [
+      "index.js",
+      "dist"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+      "@figma/plugin-typings": "*",
+      "@types/node": "^17.0.33",
+      "esbuild": "^0.14.39"
+    }
+  }

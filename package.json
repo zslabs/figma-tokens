@@ -13,6 +13,7 @@
     "build": "yarn build-css && yarn build-js",
     "build:watch": "concurrently 'yarn watch-css' 'yarn watch-js'",
     "build-transform": "webpack --mode=production --config webpack-transform.config.js",
+    "build-usefigmatokens": "webpack --mode=production --config webpack-usefigmatokens.config.js",
     "prettier:format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' ",
     "test": "jest",
     "svgr": "svgr -d src/icons/ assets/",
