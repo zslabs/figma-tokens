@@ -3,18 +3,19 @@ import { Provider } from 'react-redux';
 
 import { store } from '@/app/store';
 
-import { TokenButton } from '@/app/components/TokenButton';
-import { TokenTypes } from '@/constants/TokenTypes';
-import { SingleToken } from '@/types/tokens';
+import TokenTree from '@/app/components/TokenTree';
 
-<Meta title="Token"/>
+<Meta 
+	title="TokenTree" 
+	component={TokenTree}
+/>
 
-<ArgsTable of={TokenButton}/>
+<ArgsTable of={TokenTree}/>
 
 export const TokenDefaultStory = (args) => {
 	return (
 		<Provider store={store}>
-			<TokenButton />
+			<TokenTree />
 		</Provider>
 	)
 }
