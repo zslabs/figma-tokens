@@ -9,16 +9,13 @@
   "author": "",
   "files": [
     "index.js",
-    "dist",
     "README.md"
   ],
   "license": "MIT",
   "devDependencies": {
     "@figma/plugin-typings": "*",
     "@types/node": "^17.0.33",
-    "esbuild": "^0.14.39"
-  },
-  "dependencies": {
+    "esbuild": "^0.14.39",
     "esbuild-darwin-64": "^0.14.39"
   }
 }
