@@ -10,9 +10,24 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias['@'] = path.resolve(__dirname, '../src/');
     config.module.rules.push(
-      { test: /\.css$/, loader: [{ loader: 'style-loader' }, { loader: 'css-loader' }] },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: path.resolve(__dirname, '../src/app/styles'),
+      },
+      {
+        test: /\.svg$/,
+        use: [{
+          loader: '@svgr/webpack',
+          options: {
+            svgoConfig: {
+              plugins: [{ removeViewBox: false }]
+            }
+          }
+        }],
+      },
     );
-    console.log("after", config.module.rules);
+    console.log('333', config);
     return config;
   },
 }
