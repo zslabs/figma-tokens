@@ -16,26 +16,17 @@ import  Button  from '@/app/components/Button/Button';
 
 export const ButtonDefaultStory = (args) =>{
   return (
-    <Button
-      type={args.type}
-      form={args.form}
-      variant={args.variant}
-      onClick={args.onClick}
-      size={args.size}
-      href={args.href}
-      download={args.download}
-      disabled={args.disabled}
-      id={args.id}
-      icon={args.icon}
-      buttonRef={args.buttonRef}
-    >
+    <Button {...args}>
       Button
     </Button>
   )
 }
 
 <Canvas>
-  <Story name="Button">
+  <Story name="Button" args={{
+    type: 'button',
+    variant: 'primary',
+  }}>
     {ButtonDefaultStory.bind({})}
   </Story>
 </Canvas>
