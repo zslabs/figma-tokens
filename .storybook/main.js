@@ -5,29 +5,27 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "@storybook/addon-postcss"
   ],
   framework: "@storybook/react",
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias['@'] = path.resolve(__dirname, '../src/');
-    config.module.rules.push(
+    config.module.rules.map(rule => {
+      if (/svg/.test(rule.test)) {
+        // Silence the Storybook loaders for SVG files
+        const newRule = { ...rule, exclude: /\.svg$/i };
+        console.log(newRule);
+        return { ...rule, exclude: /\.svg$/i }
+      }
+    },
+      // Add your custom SVG loader
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: path.resolve(__dirname, '../src/app/styles'),
-      },
-      {
-        test: /\.svg$/,
-        use: [{
-          loader: '@svgr/webpack',
-          options: {
-            svgoConfig: {
-              plugins: [{ removeViewBox: false }]
-            }
-          }
-        }],
-      },
-    );
-    console.log('333', config);
+        test: /\.svg$/i,
+        issue: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+        use: ['@svgr/webpack'],
+      }
+    )
     return config;
   },
 }
