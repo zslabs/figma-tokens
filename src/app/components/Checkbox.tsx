@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import React, { useMemo } from 'react';
 import { styled } from '@/stitches.config';
-import { ReactComponent as IconCheck } from '../../icons/check.svg';
+import { IconCheck } from '@/icons';
 import IconIndeterminate from '@/icons/indeterminate.svg';
 
 const StyledIndicator = styled(CheckboxPrimitive.Indicator, {

@@ -13,21 +13,24 @@ import TokenTree from '@/app/components/TokenTree';
 	component={TokenButton}
 	args={{
 		type: TokenTypes.SIZING,
+		token:{
+			name: '23.34',
+			type: 'sizing',
+			value: '333',	
+			description: '3333',
+		}
 		displayType:'GRID',
 		draggedToken: SingleToken | null,
   	dragOverToken: SingleToken | null,
 	}}
 />
 
+<ArgsTable of={TokenButton}/>
+
 export const TokenButtonDefaultStory = (args) => {
-	const token = {
-		'name': '23.34',
-		'type': 'sizing',
-		'value': '333',
-	}
 	return (
 		<Provider store={store}>
-			<TokenButton token {...args}/>
+			<TokenButton {...args}/>
 		</Provider>
 	)
 }

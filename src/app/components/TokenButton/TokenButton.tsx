@@ -56,6 +56,7 @@ export const TokenButton: React.FC<Props> = ({
   const dispatch = useDispatch<Dispatch>();
 
   const { name } = token;
+
   // Only show the last part of a token in a group
   const visibleName = React.useMemo(() => {
     const visibleDepth = 1;
