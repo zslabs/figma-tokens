@@ -5,7 +5,7 @@ import { store } from '@/app/store';
 import { SingleToken } from '@/types/tokens';
 import { TokenTypes } from '@/constants/TokenTypes';
 
-import TokenButton from '@/app/components/TokenButton';
+import { TokenButton } from '@/app/components/TokenButton';
 import TokenTree from '@/app/components/TokenTree';
 
 <Meta 
@@ -13,12 +13,6 @@ import TokenTree from '@/app/components/TokenTree';
 	component={TokenButton}
 	args={{
 		type: TokenTypes.SIZING,
-		token:{
-			name: '23.34',
-			type: 'sizing',
-			value: '333',	
-			description: '3333',
-		}
 		displayType:'GRID',
 		draggedToken: SingleToken | null,
   	dragOverToken: SingleToken | null,
