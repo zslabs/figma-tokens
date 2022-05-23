@@ -6,15 +6,19 @@ import { store } from '@/app/store';
 
 import EditStorageItemModal from "@/app/components/modals/EditStorageItemModal";
 import Button from "@/app/components/Button/Button";
-import { localApiStateSelector } from '@/selectors';
 
-<Meta title="EditStorageItemModal" component={EditStorageItemModal} />
+<Meta 
+  title="EditStorageItemModal" 
+  component={EditStorageItemModal} 
+  args={{
+    initialValue={}
+  }}
+/>
 
 <ArgsTable of={EditStorageItemModal}/>
 
 export const EditStorageItemModalDefaultStory = (args) => {
   const [isOpen, setIsOpen] = useState(false);
-  const localApiState = useSelector(localApiStateSelector);
   return (
     <>
     <Button onClick={() => setIsOpen(true)}>
@@ -24,6 +28,16 @@ export const EditStorageItemModalDefaultStory = (args) => {
       <EditStorageItemModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        initialValue = {
+          "provider": "github",
+          "name": "takao",
+          "id": "six7/figma-tokens",
+          "branch": "main",
+          "filePath": "token-transformer/tokens.json",
+          "baseUrl": "",
+          "secret": "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",
+          "internalId": "fwSGFJHtqsxTOsiTNwa4uXYh"
+        }
       />
     </Provider>
     </>
@@ -32,8 +46,6 @@ export const EditStorageItemModalDefaultStory = (args) => {
 
 <Canvas>
   <Story name="Default">
-    <Provider store = {store}>
-      {EditStorageItemModalDefaultStory.bind({})}
-    </Provider>
+    {EditStorageItemModalDefaultStory.bind({})}
   </Story>
 </Canvas>
