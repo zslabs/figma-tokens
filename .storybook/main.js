@@ -27,7 +27,7 @@ module.exports = {
           },
         },
       ],
-      include: path.resolve(__dirname, '../src/app/styles/main.css'),
+      include: path.resolve(__dirname, '../src/app/styles/'),
     });
 
     const assetRule = config.module.rules.find(({ test }) => test?.test(".svg"));
