@@ -7,15 +7,27 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/addon-postcss"
+    "@storybook/addon-postcss",
+    "multiple-themes-stitches",
   ],
   framework: "@storybook/react",
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias['@'] = path.resolve(__dirname, '../src/');
     config.module.rules.push({
       test: /\.css$/,
-      use: ['style-loader', 'css-loader?url=false', 'sass-loader'],
-      include: path.resolve(__dirname, '../src/app/styles'),
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [
+              require('tailwindcss'),
+              require('autoprefixer'),
+            ],
+          },
+        },
+      ],
+      include: path.resolve(__dirname, '../src/app/styles/main.css'),
     });
 
     const assetRule = config.module.rules.find(({ test }) => test?.test(".svg"));

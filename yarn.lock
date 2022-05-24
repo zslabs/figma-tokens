@@ -4685,6 +4685,13 @@
   dependencies:
     lodash "^4.17.15"
 
+"@storybook/csf@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@storybook/csf/-/csf-0.0.1.tgz#95901507dc02f0bc6f9ac8ee1983e2fc5bb98ce6"
+  integrity sha512-USTLkZze5gkel8MYCujSRBVIrUQ3YPBrLOx7GNk/0wttvVtlzWXAq9eLbQ4p/NicGxP+3T7KPEMVV//g+yubpw==
+  dependencies:
+    lodash "^4.17.15"
+
 "@storybook/docs-tools@6.5.3":
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-6.5.3.tgz#2460df5d20e4c6670e985268b50bf9c412eb47b7"
@@ -13996,6 +14003,14 @@ ms@2.1.3, ms@^2.0.0, ms@^2.1.1:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
+
+multiple-themes-stitches@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/multiple-themes-stitches/-/multiple-themes-stitches-0.0.10.tgz#55a84017b0b6214855bd45bebbf19e841dbfb51e"
+  integrity sha512-sqm+ArHNf/NRP4sx3T9KFSKEZ18Bb8u/qjhA0eXF2bYYVo+JNqSWVtaBnNVr3vGE5ekgDwTdJmvqZP3eoq6UpA==
+  dependencies:
+    "@stitches/react" "^1.2.7"
+    "@storybook/csf" "^0.0.1"
 
 nan@^2.12.1:
   version "2.14.2"
