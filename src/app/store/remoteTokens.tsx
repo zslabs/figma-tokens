@@ -34,7 +34,7 @@ export default function useRemoteTokens() {
     addNewGitHubCredentials, syncTokensWithGitHub, pullTokensFromGitHub, pushTokensToGitHub, createGithubBranch, fetchGithubBranches,
   } = useGitHub();
   const {
-    addNewGitLabCredentials, syncTokensWithGitLab, pullTokensFromGitLab, pushTokensToGitLab,
+    addNewGitLabCredentials, syncTokensWithGitLab, pullTokensFromGitLab, pushTokensToGitLab, fetchGitLabBranches,
   } = useGitLab();
   const { pullTokensFromURL } = useURL();
 
@@ -175,6 +175,7 @@ export default function useRemoteTokens() {
       dispatch.uiState.setLocalApiState(credentials);
       dispatch.uiState.setApiData(credentials);
       setStorageType({ provider: credentials, shouldSetInDocument: true });
+
       return true;
     }
     return false;
@@ -187,6 +188,17 @@ export default function useRemoteTokens() {
     pullTokensFromURL,
     setStorageType,
   ]);
+
+  const fetchBranches = useCallback(async (context: ContextObject) => {
+    switch (context.provider) {
+      case StorageProviderType.GITHUB:
+        return fetchGithubBranches(context);
+      case StorageProviderType.GITLAB:
+        return fetchGitLabBranches(context);
+      default:
+        return null;
+    }
+  }, [fetchGithubBranches]);
 
   const addNewBranch = useCallback(async (context: ContextObject, branch: string, source?: string) => {
     let newBranchCreated = false;
@@ -201,15 +213,6 @@ export default function useRemoteTokens() {
 
     return newBranchCreated;
   }, [createGithubBranch]);
-
-  const fetchBranches = useCallback(async (context: ContextObject) => {
-    switch (context.provider) {
-      case StorageProviderType.GITHUB:
-        return fetchGithubBranches(context);
-      default:
-        return null;
-    }
-  }, [fetchGithubBranches]);
 
   const deleteProvider = useCallback((provider) => {
     postToFigma({

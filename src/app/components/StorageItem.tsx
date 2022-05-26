@@ -12,7 +12,7 @@ import { ApiDataType } from '@/types/api';
 
 type Props = {
   item: ApiDataType,
-  onEdit: () => void
+  onEdit: () => void,
 };
 
 const StorageItem = ({ item, onEdit }: Props) => {

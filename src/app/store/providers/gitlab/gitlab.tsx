@@ -134,6 +134,7 @@ export function useGitLab() {
     try {
       const storage = await storageClientFactory(context);
       const hasBranches = await storage.fetchBranches();
+      dispatch.branchState.setBranches(hasBranches);
 
       if (!hasBranches || !hasBranches.length) {
         return null;
@@ -205,15 +206,22 @@ export function useGitLab() {
     syncTokensWithGitLab,
   ]);
 
+  const fetchGitLabBranches = useCallback(async (context: ContextObject) => {
+    const storage = await storageClientFactory(context);
+    return storage.fetchBranches();
+  }, [storageClientFactory]);
+
   return useMemo(() => ({
     addNewGitLabCredentials,
     syncTokensWithGitLab,
     pullTokensFromGitLab,
     pushTokensToGitLab,
+    fetchGitLabBranches,
   }), [
     addNewGitLabCredentials,
     syncTokensWithGitLab,
     pullTokensFromGitLab,
     pushTokensToGitLab,
+    fetchGitLabBranches,
   ]);
 }
